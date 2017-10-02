@@ -26,6 +26,8 @@ type Configuration struct {
 	stopWords     StopWords
 	parser        *Parser
 
+	titleDelimiters []string
+
 	timeout time.Duration
 }
 
@@ -48,6 +50,7 @@ func GetDefaultConfiguration(args ...string) Configuration {
 			stopWords:               NewStopwords(), //TODO with path
 			parser:                  NewParser(),
 			timeout:                 time.Duration(5 * time.Second),
+			titleDelimiters:         []string{},
 		}
 	}
 
@@ -74,5 +77,6 @@ func GetDefaultConfiguration(args ...string) Configuration {
 		stopWords:               stopWords,
 		parser:                  NewParser(),
 		timeout:                 time.Duration(jsconfiguration.Int("timeout", 5)) * time.Second,
+		//titleDelimiters:         jsconfiguration.Array("titleDelimiters"),
 	}
 }

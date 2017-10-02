@@ -64,12 +64,13 @@ func (extr *ContentExtractor) GetTitle(document *goquery.Document) string {
 	if title == "" {
 		titleElement = document.Find("post-title,headline")
 		if titleElement == nil || titleElement.Size() == 0 {
-			return title
+			return ""
 		}
 		title = titleElement.Text()
 	}
 
-	for _, delimiter := range titleDelimiters {
+	//this can be seriously damaging
+	for _, delimiter := range extr.config.titleDelimiters {
 		if strings.Contains(title, delimiter) {
 			title = extr.splitTitle(strings.Split(title, delimiter))
 			break

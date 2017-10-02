@@ -22,6 +22,8 @@ func ReadRawHTML(a Article) string {
 // ValidateArticle validates (test) the specified article
 func ValidateArticle(expected Article, removed *[]string) error {
 	g := New()
+	g.config.titleDelimiters = []string{"|", " - ", " — ", "»", ":"}
+
 	//g.config.debug = true
 	result, err := g.ExtractFromRawHTML(expected.FinalURL, ReadRawHTML(expected))
 	if nil != err {
