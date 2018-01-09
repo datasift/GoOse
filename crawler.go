@@ -31,12 +31,9 @@ func NewCrawler(config Configuration, url string, RawHTML string) Crawler {
 
 func getCharsetFromContentType(cs string) string {
 	cs = strings.ToLower(strings.Replace(cs, " ", "", -1))
-	if strings.HasPrefix(cs, "text/html;charset=") {
-		cs = strings.TrimPrefix(cs, "text/html;charset=")
-	}
-	if strings.HasPrefix(cs, "application/xhtml+xml;charset=") {
-		cs = strings.TrimPrefix(cs, "application/xhtml+xml;charset=")
-	}
+	cs = strings.TrimPrefix(cs, "text/html;charset=")
+	cs = strings.TrimPrefix(cs, "text/xhtml;charset=")
+	cs = strings.TrimPrefix(cs, "application/xhtml+xml;charset=")
 	return NormaliseCharset(cs)
 }
 
@@ -140,6 +137,7 @@ func (c Crawler) Crawl() (*Article, error) {
 	}
 	article.FinalURL = c.url
 	article.Doc = document
+
 	article.Title = extractor.GetTitle(document)
 	article.MetaLang = extractor.GetMetaLanguage(document)
 	article.MetaFavicon = extractor.GetFavicon(document)
@@ -160,6 +158,7 @@ func (c Crawler) Crawl() (*Article, error) {
 	if article.TopImage == "" {
 		article.TopImage = WebPageResolver(article)
 	}
+
 	article.TopNode = extractor.CalculateBestNode(document)
 	if article.TopNode != nil {
 		article.TopNode = extractor.PostCleanup(article.TopNode)
