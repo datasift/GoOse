@@ -109,18 +109,16 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 		attr, _ = document.Attr("lang")
 	}
 	if attr == "" {
-		selection := document.Find("meta").EachWithBreak(func(i int, s *goquery.Selection) bool {
-			var exists bool
-			attr, exists = s.Attr("http-equiv")
-			if exists && attr == "content-language" {
-				return false
+		document.Find("meta").EachWithBreak(func(i int, s *goquery.Selection) bool {
+			attr2, exists := s.Attr("http-equiv")
+			if exists && attr2 == "content-language" {
+				attr, _ = s.Attr("content")
+				return false //exit loop
 			}
 			return true
 		})
-		if selection != nil {
-			attr, _ = selection.Attr("content")
-		}
 	}
+
 	idx := strings.LastIndex(attr, "-")
 	if idx == -1 {
 		language = attr
@@ -128,13 +126,15 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 		language = attr[0:idx]
 	}
 
-	_, ok := sw[language]
-
-	if language == "" || !ok {
+	//_, hasStopwords := sw[language]
+	//if language == "" || !hasStopwords {
+	if language == "" || !isValidLanguageCode(language) {
+		// fallback to simple stop words-based language detection
 		language = extr.config.stopWords.SimpleLanguageDetector(shtml.Text())
-		if language == "" {
-			language = defaultLanguage
-		}
+	}
+	// this should be removed - defaults are dangerous
+	if language == "" {
+		language = defaultLanguage
 	}
 
 	extr.config.targetLanguage = language

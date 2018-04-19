@@ -38,6 +38,10 @@ func ValidateArticle(expected Article, removed *[]string) error {
 		return fmt.Errorf("article title does not match. Got '%q', Expected '%q'", result.Title, expected.Title)
 	}
 
+	if result.MetaLang != expected.MetaLang {
+		return fmt.Errorf("article language does not match. Got '%q', Expected '%q'", result.MetaLang, expected.MetaLang)
+	}
+
 	if result.MetaDescription != expected.MetaDescription {
 		return fmt.Errorf("article metaDescription does not match. Got '%q', Expected '%q'", result.MetaDescription, expected.MetaDescription)
 	}
@@ -81,6 +85,7 @@ func Test_AbcNewsGoCom(t *testing.T) {
 		MetaKeywords:    "nj devils owner lands helicopter kids soccer game, helicopter youth soccer game, newark, new jersey, nj nj devils, nhl, josh harris, helicopter cancels soccer game, st benedict preparatory school, sta u13, youth soccer, us news, national news, local news",
 		CanonicalLink:   "http://abcnews.go.com/US/nj-devils-owner-apologizes-landing-helicopter-middle-kids/story?id=35155591",
 		TopImage:        "http://a.abcnews.go.com/images/US/ht_devils_helicopter_landing_hb_151112_16x9_992.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://abcnews.go.com/topics/sports/nhl.htm",
@@ -109,6 +114,7 @@ func Test_BbcCom(t *testing.T) {
 		MetaKeywords:    "keywords, added, to, test, case insensitive",
 		CanonicalLink:   "http://www.bbc.com/news/business-31545115",
 		TopImage:        "http://news.bbcimg.co.uk/media/images/81120000/jpg/_81120901_81120501.jpg",
+		MetaLang:        "en",
 	}
 
 	err := ValidateArticle(article, &[]string{"~~~REMOVED~~~"})
@@ -126,6 +132,7 @@ func Test_BbcCoUk(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://www.bbc.co.uk/news/health-34744858",
 		TopImage:        "http://ichef.bbci.co.uk/news/1024/cpsprodpb/B4FE/production/_86643364_m7410098-homeopathic_pills-spl.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.britishhomeopathic.org/how-are-homeopathic-medicines-made/",
@@ -153,6 +160,7 @@ func Test_BizJournalsCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://www.bizjournals.com/seattle/blog/techflash/2015/11/activist-investor-sells-off-1-billion-worth-of.html",
 		TopImage:        "http://media.bizj.us/view/img/2167041/mason-morfit*400xx306-307-0-25.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.bizjournals.com/profiles/company/us/wa/redmond/microsoft_corporation/1087001",
@@ -179,6 +187,7 @@ func Test_BlogSpotCoUK(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://googlewebmastercentral.blogspot.com/2015/05/five-ways-to-grow-your-business-this.html",
 		TopImage:        "http://3.bp.blogspot.com/-6SCcCupadL0/VUnQdhs_98I/AAAAAAAAA7Q/wCdIXm6v9Sg/s72-c/Screen%2BShot%2B2015-05-06%2Bat%2B10.22.08%2BAM.png",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://gybo.com/resources",
@@ -206,6 +215,7 @@ func Test_BloombergCom(t *testing.T) {
 		MetaKeywords:    "Jobs,Banking,London",
 		CanonicalLink:   "http://www.bloomberg.com/news/articles/2015-11-13/u-k-needs-urgent-action-to-keep-banks-in-london-bba-says",
 		TopImage:        "http://assets.bwbx.io/images/ifXjLu6rC3Tg/v1/-1x-1.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://bloom.bg/dg-ws-core-bcom-a1",
@@ -227,6 +237,7 @@ func Test_businessInsiderCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://www.businessinsider.com/credit-card-chips-could-slow-black-friday-lines-2015-11",
 		TopImage:        "http://static5.businessinsider.com/image/56410a64bd86ef18008c8901/this-little-change-could-make-black-friday-even-more-miserable-this-year.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.businesswire.com/news/home/20150504005631/en/Issuers-Forecast-U.S.-Shift-Chip-Cards-Complete",
@@ -250,6 +261,7 @@ func Test_CnnCom(t *testing.T) {
 		MetaKeywords:    "f1, lewis hamilton, brazilian grand prix, monaco, mercedes, motorsport, Exhausted F1 star Lewis Hamilton crashes car - CNN.com",
 		CanonicalLink:   "http://edition.cnn.com/2015/11/13/motorsport/formula-one-lewis-hamilton-crashes-car-news/index.html",
 		TopImage:        "http://i2.cdn.turner.com/cnnnext/dam/assets/151113115049-lewis-hamilon-media-brazil-large-169.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"https://instagram.com/p/99kB_8L00w/",
@@ -275,6 +287,7 @@ func Test_DailyMailCoUk(t *testing.T) {
 		MetaKeywords:    "Debenhams,House,Fraser,charge,PAPER,BAGS,Tesco,started,giving,away,free",
 		CanonicalLink:   "http://www.dailymail.co.uk/news/article-3316789/Debenhams-House-Fraser-charge-PAPER-BAGS-Tesco-started-giving-away-free.html",
 		TopImage:        "http://i.dailymail.co.uk/i/pix/2015/11/13/10/2E6847FA00000578-0-image-a-9_1447409694956.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.standard.co.uk/news/uk/tesco-is-giving-out-paper-bags-to-dodge-the-5p-carrier-bag-charge-a3112131.html",
@@ -298,8 +311,21 @@ func Test_MatchExactDescriptionMetaTag(t *testing.T) {
 		CanonicalLink:   "http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc/khanh-ly-den-vieng-mo-trinh-cong-son-2985539.html",
 		FinalURL:        "http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc/khanh-ly-den-vieng-mo-trinh-cong-son-2985539.html",
 		TopImage:        "http://l.f11.img.vnecdn.net/2014/05/02/2-5456-1398995030_490x294.jpg",
+		MetaLang:        "vi",
 	}
 	article.Links = []string{
+		"http://giaitri.vnexpress.net/tin-tuc/nhac/lang-nhac/khanh-ly-se-tham-mo-trinh-cong-son-khi-ve-viet-nam-2981844.html",
+		"http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc/sao-viet-buc-xuc-vi-bi-su-dung-hinh-anh-trai-phep-3293246.html",
+		"http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc/thien-than-7-tuoi-cua-guong-mat-than-quen-nhi-3294189.html",
+		"http://giaitri.vnexpress.net/tin-tuc/gioi-sao/quoc-te/guong-mat-bien-doi-theo-thoi-gian-cua-huynh-hieu-minh-3294360.html",
+		"http://giaitri.vnexpress.net/photo/trong-nuoc/duc-hai-lien-tuc-hon-khanh-my-tren-tham-do-3294882.html",
+		"http://giaitri.vnexpress.net/tin-tuc/gioi-sao/quoc-te/khong-ai-nhan-ra-nguoi-vo-gia-cu-richard-gere-3294588.html",
+		"http://giaitri.vnexpress.net/photo/trong-nuoc/duc-hai-lien-tuc-hon-khanh-my-tren-tham-do-3294882.html",
+		"http://giaitri.vnexpress.net/photo/trong-nuoc/duc-hai-lien-tuc-hon-khanh-my-tren-tham-do-3294882.html",
+		"http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc/thien-than-7-tuoi-cua-guong-mat-than-quen-nhi-3294189.html",
+		"http://giaitri.vnexpress.net/photo/trong-nuoc/kyo-york-chup-anh-keu-goi-bao-ve-moi-truong-3294700.html",
+		"http://giaitri.vnexpress.net/photo/trong-nuoc/kyo-york-chup-anh-keu-goi-bao-ve-moi-truong-3294700.html",
+		"http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc/trong-hieu-idol-ngu-guc-trong-long-bo-3294837.html",
 		"http://giaitri.vnexpress.net/photo/trong-nuoc/ngoc-diem-khoe-con-gai-5-tuoi-3294807.html",
 		"http://giaitri.vnexpress.net/photo/trong-nuoc/con-trai-truong-quynh-anh-do-danh-con-gai-xuan-lan-3294397.html",
 		"http://giaitri.vnexpress.net/tin-tuc/gioi-sao/trong-nuoc/huong-ly-toi-khong-ngac-nhien-khi-chien-thang-next-top-3294195.html",
@@ -327,6 +353,7 @@ func Test_EconomistCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://www.economist.com/blogs/gulliver/2015/04/renting-hotel-rooms-hour",
 		TopImage:        "https://www.economist.com/sites/default/files/images/guliver.png",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.travelmole.com/news_feature.php?news_id=2016292",
@@ -349,6 +376,7 @@ func Test_EditionCnnCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://www.cnn.com/2012/07/08/opinion/banzi-ted-open-source/index.html",
 		TopImage:        "http://i2.cdn.turner.com/cnn/dam/assets/120706022111-ted-cnn-ideas-massimo-banzi-00003302-story-top.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://blog.ted.com/2012/06/26/open-source-your-projects-and-upload-them-to-space-massimo-banzi-at-tedglobal-2012/",
@@ -387,6 +415,7 @@ func Test_EntrepreneurCom(t *testing.T) {
 		MetaKeywords:    "Growth Strategies,Fear,Success Stories,Courage",
 		CanonicalLink:   "http://www.entrepreneur.com/article/252739",
 		TopImage:        "https://assets.entrepreneur.com/content/3x2/822/20151112203147-fire-breathing-dragon.jpeg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.entrepreneur.com/article/239581",
@@ -411,6 +440,7 @@ func Test_ExampleCom(t *testing.T) {
 		MetaKeywords:    "example,testing",
 		CanonicalLink:   "http://www.example.com/index.html",
 		TopImage:        "/example_top_image.png",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.example.com/page1.html",
@@ -441,6 +471,7 @@ func Test_FacebookCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "https://www.facebook.com/facebook/photos/a.376995711728.190761.20531316728/10153398878696729/",
 		TopImage:        "https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xpa1/v/t1.0-9/p180x540/10408016_10153398878696729_8237363642999953356_n.png?oh=c6ae71220447f363ec41ea54c38341e1&oe=55B6D827&__gda__=1436749528_5c72e92a5105c1cc6df97163a64e72ce",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"https://www.facebook.com/facebook?fref=photo",
@@ -462,6 +493,7 @@ func Test_ForbesCom(t *testing.T) {
 		MetaKeywords:    "Lifestyle,Lists,On The Move,Travel",
 		CanonicalLink:   "http://www.forbes.com/sites/niallmccarthy/2015/11/13/the-worlds-most-expensive-passports-infographic/",
 		TopImage:        "http://blogs-images.forbes.com/niallmccarthy/files/2015/11/20151109_Passports_Fo.jpg",
+		MetaLang:        "en",
 	}
 	//article.Links = []string{""}
 
@@ -481,6 +513,7 @@ func Test_FoxNewsCom(t *testing.T) {
 		MetaKeywords:    "Democratic National Committee,Hillary Rodham Clinton,Barack Obama,presidential primary,primary voters,superdelegates",
 		CanonicalLink:   "http://www.foxnews.com/politics/2015/11/13/party-insiders-give-clinton-early-commanding-delegate-edge/",
 		TopImage:        "http://a57.foxnews.com/global.fncstatic.com/static/managed/img/fn2/video/0/0/111215_otr_clinton_1280.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.ap.org/",
@@ -498,31 +531,14 @@ func Test_GloboesporteGloboCom(t *testing.T) {
 		Domain:          "globoesporte.globo.com",
 		Title:           "Rodrigo Caio treina até nas férias e tenta acelerar retorno aos gramados",
 		MetaDescription: "Rodrigo Caio treina na esteira durante as férias em Dracena-SP (Foto: Divulgação)Rodrigo Caio quer ganhar tempo na recuperação da lesão que sofreu no joelho esquerdo. Apesar de ter sido liberado pelo departamento médico do São Paulo para as férias, o ...",
-		CleanedText:     "Rodrigo Caio treina até nas férias e tenta acelerar retorno aos gramados Jogador segue programação de exercícios em Dracena, interior de São Paulo. Comissão técnica planeja volta dele para o fim de fevereiro ou início de março\n\nRodrigo Caio treina na esteira durante as férias em Dracena-SP (Foto: Divulgação) Rodrigo Caio quer ganhar tempo na recuperação da lesão que\n\nsofreu no joelho esquerdo. Apesar de ter sido liberado pelo departamento médico\n\ndo São Paulo para as férias, o jogador vem treinando diariamente para acelerar\n\na recuperação após ser submetido a uma cirurgia.\n\nO zagueiro e volante passa férias com a família em Dracena, interior\n\nde São Paulo, e alterna os períodos de descanso com uma rotina de\n\nexercícios. Ele vem realizando trabalhos de reforço muscular e corridas na\n\nesteira.\n\nO jogador lesionou o joelho esquerdo no dia 2 de agosto,\n\ncontra o Criciúma, no Morumbi, pelo Campeonato Brasileiro, e precisou passar por\n\numa cirurgia. O defensor vinha sendo um dos destaques do São Paulo na\n\ntemporada.\n\nNa avaliação do departamento médico, Rodrigo Caio deve\n\nser liberado para treinos com o elenco e jogos entre fevereiro e março. Com\n\nisso, é provável que seja inscrito pelo técnico Muricy Ramalho para disputar a\n\nfase de grupos da Taça Libertadores.\n\np sobre\n\nSão Pauloveja a página da equipe »\n\n+\n\nAnterior\n\n30\n\nDez\n\n18:27\n\nBLOG: Corinthians corre risco de perder Dudu para o São Paulo\n\n16:30\n\nBLOG: RETROSPECTIVA 2014: Entre variações táticas, o ano foi da intensidade, 3 zagueiros e contragolpe\n\n12:01\n\nEm último teste antes da Copinha, São Paulo empata com Botafogo-SP\n\n11:06\n\nSão Paulo tenta fazer acordo para se livrar do 'mico' Clemente Rodríguez\n\n10:00\n\nVolante Hudson vê São Paulo pronto para conquistar títulos em 2015\n\n07:25\n\nTricolor recebe Botafogo em Cotia e faz último amistoso antes da Copinha\n\n29\n\nDez\n\n19:05\n\nApós ano no Dragão, Caramelo pode ser cedido pelo São Paulo à Chape\n\n16:28\n\nConmebol divulga tabela detalhada da Taça Libertadores de 2015; veja\n\n09:15\n\nAidar acredita em brilho de Pato, mas cobra: \"Ainda não mostrou a que veio\"\n\n08:00\n\nTimes paulistas tentam manter hegemonia recente na Copinha\n\nProximo\n\nRodrigo Caio\n\n+\n\nAnterior\n\n24\n\nDez\n\n08:10\n\nSem dor, Rodrigo Caio vence etapas e já pensa na volta aos gramados\n\n19\n\nDez\n\n21:44\n\nVice do São Paulo diz que Alvaro fica, revela parceria e quer comprar Pato\n\n13:52\n\nEm recuperação, Rodrigo Caio segue rotina no CT e ganha apoio de Ganso\n\n09\n\nDez\n\n15:04\n\nRodrigo Caio vence nova etapa de recuperação e inicia corrida na esteira\n\n25\n\nSet\n\n17:54\n\nSaudade! Toloi e Rodrigo Caio observam treino dos reservas no CT\n\n11\n\nSet\n\n16:02\n\nRodrigo Caio inicia nova etapa de recuperação e festeja evolução\n\n14\n\nAgo\n\n17:13\n\nRodrigo Caio começa fisioterapia após cirurgia no joelho esquerdo\n\n12\n\nAgo\n\n18:23\n\nCom a família por perto, Rodrigo Caio comenta dificuldades após a operação\n\n07\n\nAgo\n\n16:23\n\nRodrigo Caio passa por cirurgia e inicia fisioterapia na próxima semana\n\n06\n\nAgo\n\n08:05\n\nLesão de Rodrigo Caio trará reflexos dentro e fora de campo no São Paulo\n\nProximo",
+		CleanedText:     "Rodrigo Caio treina na esteira durante as férias em Dracena-SP (Foto: Divulgação) Rodrigo Caio quer ganhar tempo na recuperação da lesão que\n\nsofreu no joelho esquerdo. Apesar de ter sido liberado pelo departamento médico\n\ndo São Paulo para as férias, o jogador vem treinando diariamente para acelerar\n\na recuperação após ser submetido a uma cirurgia.\n\nO zagueiro e volante passa férias com a família em Dracena, interior\n\nde São Paulo, e alterna os períodos de descanso com uma rotina de\n\nexercícios. Ele vem realizando trabalhos de reforço muscular e corridas na\n\nesteira.\n\nO jogador lesionou o joelho esquerdo no dia 2 de agosto,\n\ncontra o Criciúma, no Morumbi, pelo Campeonato Brasileiro, e precisou passar por\n\numa cirurgia. O defensor vinha sendo um dos destaques do São Paulo na\n\ntemporada.\n\nNa avaliação do departamento médico, Rodrigo Caio deve\n\nser liberado para treinos com o elenco e jogos entre fevereiro e março. Com\n\nisso, é provável que seja inscrito pelo técnico Muricy Ramalho para disputar a\n\nfase de grupos da Taça Libertadores.",
 		MetaKeywords:    "notícias, notícia, presidente prudente região",
 		CanonicalLink:   "http://globoesporte.globo.com/sp/presidente-prudente-regiao/noticia/2014/12/rodrigo-caio-treina-ate-nas-ferias-e-tenta-acelerar-retorno-aos-gramados.html",
 		TopImage:        "http://s.glbimg.com/es/ge/f/original/2014/12/26/10863872_894379987249341_2406060334390226774_o.jpg",
+		MetaLang:        "pt",
 	}
 	article.Links = []string{
 		"http://globoesporte.globo.com/atleta/rodrigo-caio.html",
-		"http://globoesporte.globo.com/sp/ribeirao-preto-e-regiao/noticia/2014/12/em-ultimo-teste-antes-da-copinha-sao-paulo-empata-com-botafogo-sp.html#equipe-sao-paulo",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/12/sao-paulo-tenta-fazer-acordo-para-se-livrar-do-mico-clemente-rodriguez.html#equipe-sao-paulo",
-		"http://globoesporte.globo.com/mg/zona-da-mata-centro-oeste/noticia/2014/12/volante-hudson-ve-sao-paulo-pronto-para-conquistar-titulos-em-2015.html#equipe-sao-paulo",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/12/tricolor-recebe-botafogo-em-cotia-e-faz-ultimo-amistoso-antes-da-copinha.html#equipe-sao-paulo",
-		"http://globoesporte.globo.com/futebol/noticia/2014/12/apos-ano-no-atletico-go-caramelo-pode-ser-cedido-pelo-sao-paulo-chape.html#equipe-sao-paulo",
-		"http://globoesporte.globo.com/futebol/libertadores/noticia/2014/12/conmebol-divulga-tabela-e-timao-x-sao-paulo-pode-abrir-fase-de-grupos.html#equipe-sao-paulo",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/12/aidar-acredita-em-brilho-de-pato-mas-cobra-ainda-nao-mostrou-que-veio.html#equipe-sao-paulo",
-		"http://globoesporte.globo.com/futebol/Copa-SP-de-futebol-junior/noticia/2014/12/times-paulistas-tentam-manter-hegemonia-recente-na-copinha.html#equipe-sao-paulo",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/12/sem-dor-rodrigo-caio-vence-etapas-e-ja-pensa-na-volta-aos-gramados.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/12/vice-do-sao-paulo-diz-que-alvaro-fica-revela-parceria-e-quer-comprar-pato.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/12/fora-ha-cinco-meses-rodrigo-caio-dispensa-ferias-e-tem-papo-com-ganso.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/12/rodrigo-caio-vence-nova-etapa-de-recuperacao-e-inicia-corrida-na-esteira.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/09/saudade-toloi-e-rodrigo-caio-observam-treino-dos-reservas-no-ct.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/09/rodrigo-caio-inicia-nova-etapa-de-recuperacao-e-festeja-evolucao.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/08/rodrigo-caio-comeca-fisioterapia-apos-cirurgia-no-joelho-esquerdo.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/sp/presidente-prudente-regiao/noticia/2014/08/com-familia-por-perto-rodrigo-caio-comenta-dificuldades-apos-operacao.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/08/rodrigo-caio-opera-joelho-e-iniciara-fisioterapia-no-ct-na-proxima-semana.html#atleta-rodrigo-caio",
-		"http://globoesporte.globo.com/futebol/times/sao-paulo/noticia/2014/08/lesao-de-rodrigo-caio-trara-reflexos-dentro-e-fora-de-campo-no-sao-paulo.html#atleta-rodrigo-caio",
 	}
 
 	err := ValidateArticle(article, &[]string{"~~~REMOVED~~~"})
@@ -540,6 +556,7 @@ func Test_HbrOrg(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "",
 		TopImage:        "https://hbr.org/resources/images/article_assets/2015/11/nov15-12-169799513-horz.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"https://blogs.adobe.com/conversations/2015/08/email.html",
@@ -561,6 +578,7 @@ func Test_HuffingtonPostCoUk(t *testing.T) {
 		MetaKeywords:    "changing, channels:, how, we, are, controlling, the, future, of, tv, scheduling, uk, entertainment",
 		CanonicalLink:   "http://www.huffingtonpost.co.uk/2015/10/29/how-we-are-changing-the-future-of-tv-scheduling_n_8303736.html",
 		TopImage:        "http://i.huffpost.com/gen/3507100/images/o-TELEVISION-REMOTE-CONTROL-facebook.jpg",
+		MetaLang:        "en",
 	}
 	//article.Links = []string{""}
 
@@ -580,6 +598,7 @@ func Test_HuffingtonPostJp(t *testing.T) {
 		MetaKeywords:    "クロマグロ残り2匹　葛西臨海水族園の大量死は未だに原因不明, japan",
 		CanonicalLink:   "http://www.huffingtonpost.jp/2015/03/03/tuna-death_n_6796602.html",
 		TopImage:        "http://i.huffpost.com/gen/2678692/images/o-TUNA-DEATH-facebook.jpg",
+		MetaLang:        "ja",
 	}
 	//article.Links = []string{""}
 
@@ -599,6 +618,7 @@ func Test_IncCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://www.inc.com/zoe-henry/rent-the-runway-2015-company-of-the-year-nominee.html",
 		TopImage:        "http://www.inc.com/uploaded_files/image/970x450/OUT63313304-web_70674.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.inc.com/",
@@ -649,6 +669,7 @@ func Test_LinkedinCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "https://www.linkedin.com/pulse/unexpected-way-achieve-better-work-life-balance-jeff-haden",
 		TopImage:        "http://m.c.lnkd.licdn.com/mpr/mpr/AAEAAQAAAAAAAATuAAAAJGRiODU4MjBjLTFlZTEtNGQ3NS05ZDk1LTZiNjVkYjE5NWZlNA.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.inc.com/jeff-haden/silence-the-surprising-way-to-achieve-a-goal.html",
@@ -681,6 +702,7 @@ func Test_NyTimesCom(t *testing.T) {
 		MetaKeywords:    "Gun Control,Attacks on Police,Firearms,Bureau of Alcohol  Tobacco and Firearms",
 		CanonicalLink:   "http://www.nytimes.com/interactive/2015/11/12/us/gun-traffickers-smuggling-state-gun-laws.html",
 		TopImage:        "http://static01.nyt.com/images/2015/11/12/us/gun-traffickers-smuggling-state-gun-laws-1447372488027/gun-traffickers-smuggling-state-gun-laws-1447372488027-articleLarge-v4.png",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.motherjones.com/politics/2013/12/state-gun-laws-after-newtown",
@@ -709,6 +731,7 @@ func Test_PostFacebookCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "",
 		TopImage:        "",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"https://www.facebook.com/help/cookies?fref=cub",
@@ -731,10 +754,11 @@ func Test_ProfitLindorffFi(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://profit.lindorff.fi/lindorff24-fi-muuttaa-maksujen-hoidon-mobiiliksi/",
 		TopImage:        "http://profit.lindorff.fi/wp-content/uploads/2015/02/Iso_Lindorff24_2_600x2501.jpg",
+		MetaLang:        "fi",
 	}
-	article.Links = []string{
-		"http://profit.lindorff.fi/teemat/uudistaja/",
-	}
+	//article.Links = []string{
+	//	"http://profit.lindorff.fi/teemat/uudistaja/",
+	//}
 
 	err := ValidateArticle(article, &[]string{"~~~REMOVED~~~"})
 	if err != nil {
@@ -751,6 +775,7 @@ func Test_PrnewswireCom(t *testing.T) {
 		MetaKeywords:    "Atlantic Merchant Capital Investors, florida, Financing Agreements, Banking & Financial Services, Social Media, Internet Technology, Computer & Electronics",
 		CanonicalLink:   "http://www.prnewswire.com/news-releases/atlantic-merchant-capital-makes-lead-investment-in-social-quant-300074212.html",
 		TopImage:        "http://content.prnewswire.com/designimages/logo-prn-01_PRN.gif",
+		MetaLang:        "en",
 	}
 	//article.Links = []string{}
 
@@ -772,6 +797,7 @@ func Test_RelativeImageWithSpecialChars(t *testing.T) {
 		CanonicalLink:   "https://emeia.ey-vx.com/707/43100/april-2015/nordics---no---e---ifrs9---bergen---mai-2015.asp?sid=51a92e43-8903-43bd-8cfd-8431639dfb5e",
 		FinalURL:        "https://emeia.ey-vx.com/707/43100/april-2015/nordics---no---e---ifrs9---bergen---mai-2015.asp?sid=51a92e43-8903-43bd-8cfd-8431639dfb5e",
 		TopImage:        "https://emeia.ey-vx.com/707/43100/_images/bergen%201%283%29.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.ey.com/NO/no/Newsroom/PR-activities/PR-programs/Kurs-Bergen-2015-05-20-IFRS9",
@@ -798,6 +824,7 @@ func Test_SlideshareNet(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://www.slideshare.net/adamnash/lessons-on-growth-boston-2014",
 		TopImage:        "https://cdn.slidesharecdn.com/ss_thumbnails/lessonsongrowthv2-140224231617-phpapp01-thumbnail-4.jpg?cb=1393332344",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.linkedin.com/legal/copyright-policy",
@@ -819,6 +846,7 @@ func Test_SoundCloudCom(t *testing.T) {
 		MetaKeywords:    "record, sounds, share, sound, audio, tracks, music, soundcloud",
 		CanonicalLink:   "https://soundcloud.com/replyall/18-silence-and-respect",
 		TopImage:        "https://i1.sndcdn.com/artworks-000112044299-u970sx-t500x500.jpg",
+		MetaLang:        "en",
 	}
 	//article.Links = []string{}
 
@@ -838,6 +866,7 @@ func Test_TechCrunchCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://techcrunch.com/2015/11/12/gmail-will-soon-warn-users-when-emails-arrive-over-unencrypted-connections/",
 		TopImage:        "https://tctechcrunch2011.files.wordpress.com/2015/02/gmail-autocomplete.png?w=764&h=400&crop=1",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://techcrunch.com/event-info/disrupt-london-2015/#tickets",
@@ -861,6 +890,7 @@ func Test_TheGuardianCom(t *testing.T) {
 		MetaKeywords:    "Weather,Met Office,Scotland,UK news",
 		CanonicalLink:   "http://www.theguardian.com/uk-news/2015/nov/12/storm-abigail-forces-school-closures-in-scotland",
 		TopImage:        "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/11/12/1447354267832/1a8862ca-64a6-492f-af0e-49a44523b360-2060x1236.jpeg?w=1200&q=85&auto=format&sharp=10&s=ded68c9fe6a7099fe1f2faf30130396f",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.theguardian.com/uk/met-office",
@@ -884,6 +914,7 @@ func Test_TwitterCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "https://twitter.com/business/status/665179987645964290",
 		TopImage:        "https://pbs.twimg.com/media/CTsxrHVUkAAeOS2.jpg:large",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"https://t.co/pYwmmcd0bL",
@@ -908,6 +939,7 @@ func Test_UsaTodayCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://www.usatoday.com/story/money/columnist/powell/2015/11/12/social-security-medicare-changes-budget-law-retirement/75164246/",
 		TopImage:        "http://www.gannett-cdn.com/-mm-/eba3ab7ada1c4fcc1a671898ecfb68274260e9c9/c=0-48-508-335&r=x633&c=1200x630/local/-/media/2015/02/24/USATODAY/USATODAY/635603784536631512-177533853.jpg",
+		MetaLang:        "en",
 	}
 
 	removed := []string{"~~~REMOVED~~~"}
@@ -926,6 +958,7 @@ func Test_WashingtonpostCom(t *testing.T) {
 		MetaKeywords:    "Obama; Syria; TPP; immigration; Iran; Guantanamo",
 		CanonicalLink:   "https://www.washingtonpost.com/news/the-fix/wp/2015/11/12/the-7-big-things-on-president-obamas-to-do-list-with-one-year-to-go/",
 		TopImage:        "http://img.washingtonpost.com/rf/image_908w/2010-2019/WashingtonPost/2015/11/11/National-Politics/Images/05020997.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"https://www.washingtonpost.com/news/the-fix/wp/2015/11/06/by-nixing-the-keystone-pipeline-obama-finalizes-the-third-facet-of-his-legacy/",
@@ -961,6 +994,7 @@ func Test_WordpressCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "",
 		TopImage:        "https://secure.gravatar.com/blavatar/749e313b7d7ba65e9f0d0fabb2b5fd36?s=200&ts=1447426008",
+		MetaLang:        "en",
 	}
 	//article.Links = []string{""}
 
@@ -980,6 +1014,7 @@ func Test_WsjCom(t *testing.T) {
 		MetaKeywords:    "democratic primary,donors,election 2016,fundraising,maximum donation,super pacs,political,general news,politics,international relations,domestic politics,elections,national,presidential elections",
 		CanonicalLink:   "http://www.wsj.com/articles/big-obama-donors-stay-on-sidelines-in-2016-race-1447375429",
 		TopImage:        "http://si.wsj.net/public/resources/images/BN-LF842_OBADON_D_20151112192304.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://topics.wsj.com/person/O/Barack-Obama/4328",
@@ -1011,6 +1046,7 @@ func Test_YahooCom(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "http://news.yahoo.com/el-nino-sends-rare-tropical-visitors-california-waters-110532667.html",
 		TopImage:        "https://s1.yimg.com/bt/api/res/1.2/q3ifY_wb94kl1PKV7QJ8UQ--/YXBwaWQ9eW5ld3NfbGVnbztpbD1wbGFuZTtxPTc1O3c9NjAw/http://media.zenfs.com/en_us/News/Reuters/2015-11-13T110532Z_1_LYNXNPEBAC0IO_RTROPTP_2_CALIFORNIA-ELNINO-FISH.JPG",
+		MetaLang:        "en",
 	}
 	//article.Links = []string{""}
 
@@ -1030,6 +1066,7 @@ func Test_YouTubeCom(t *testing.T) {
 		MetaKeywords:    "music, official, music video, Missy Elliott (Musical Artist), Pharrell Williams (Celebrity), Hip Hop Music (Musical Genre), WTF, Where They From, Dave Meyers...",
 		CanonicalLink:   "https://www.youtube.com/watch?v=KO_3Qgib6RQ",
 		TopImage:        "https://i.ytimg.com/vi/KO_3Qgib6RQ/hqdefault.jpg",
+		MetaLang:        "en",
 	}
 	//article.Links = []string{""}
 
@@ -1050,6 +1087,7 @@ func Test_Dev4510(t *testing.T) {
 		MetaKeywords:    "Bicycles and Bicycling,New York City,Uncategorized",
 		CanonicalLink:   "http://6thfloor.blogs.nytimes.com/2011/03/09/i-was-a-teenage-cyclist-or-how-anti-bike-lane-arguments-echo-the-tea-party/",
 		TopImage:        "http://graphics8.nytimes.com/images/blogs_v5/../icons/t_logo_291_black.png",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.nypost.com/p/news/local/janette_big_transitway_road_to_ruin_V6obl2EErgSaSZtg04Lr1K",
@@ -1084,6 +1122,7 @@ func Test_Dev4510b(t *testing.T) {
 		MetaKeywords:    "Paris Attacks (November 2015),Brussels (Belgium),Abdeslam  Ibrahim,Terrorism,Charlie Hebdo,Abdeslam  Salah,Abdeslam  Mohamed,Islamic State in Iraq and Syria (ISIS),Abaaoud  Abdelhamid",
 		CanonicalLink:   "http://www.nytimes.com/2015/11/17/world/europe/in-suspects-brussels-neighborhood-a-history-of-petty-crimes-and-missed-chances.html",
 		TopImage:        "http://static01.nyt.com/images/icons/t_logo_291_black.png",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.nytimes.com/interactive/2015/11/13/world/europe/paris-shooting-attacks.html",
@@ -1113,6 +1152,7 @@ func Test_Dev4510c(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "",
 		TopImage:        "https://cdn.rt.com/files/2015.11/article/564c8e0fc46188150e8b4595.jpg",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"https://www.rt.com/news/323404-lavrov-syria-s24-turkey/",
@@ -1148,6 +1188,7 @@ func Test_NytEncodingIssues(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "",
 		TopImage:        "http://graphics8.nytimes.com/images/2002/05/10/movies/10STAR.1.jpg",
+		MetaLang:        "en",
 	}
 
 	removed := []string{"~~~REMOVED~~~"}
@@ -1166,6 +1207,7 @@ func TestCharsetEucJp(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "",
 		TopImage:        "",
+		MetaLang:        "ja",
 	}
 
 	removed := []string{"~~~REMOVED~~~"}
@@ -1185,6 +1227,7 @@ func TestCharsetShiftJIS(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "",
 		TopImage:        "",
+		MetaLang:        "ja",
 	}
 	article.Links = []string{}
 
@@ -1205,6 +1248,7 @@ func TestCharsetISO_8859_1(t *testing.T) {
 		MetaKeywords:    "",
 		CanonicalLink:   "",
 		TopImage:        "/delta_answer_10.png",
+		MetaLang:        "en",
 	}
 	article.Links = []string{
 		"http://www.apache.org/",
