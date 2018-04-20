@@ -484,6 +484,26 @@ func Test_FacebookCom(t *testing.T) {
 	}
 }
 
+func Test_FocusDe(t *testing.T) {
+	article := Article{
+		Domain:          "focus.de",
+		Title:           "Landespolizeidirektion: #Kuschelwuschel ist wieder bei seiner Familie!",
+		MetaDescription: "Ihr seid echt Bärenstark!\n\n   Dank eurer Mithilfe hat die Familienzusammenführung geklappt.",
+		CleanedText:     "",
+		MetaKeywords:    "Regional Nachrichten , Thüringen, Landespolizeidirektion",
+		CanonicalLink:   "https://www.focus.de/regional/thueringen/landespolizeidirektion-kuschelwuschel-ist-wieder-bei-seiner-familie_id_8799171.html",
+		TopImage:        "https://p5.focus.de/img/thueringen/crop8799170/1662713622-w1200-h627-o-q75-p5/8ddd6fab-459a-47b8-9598-6d29df6566d4.jpg",
+		MetaLang:        "de",
+	}
+	//article.Links = []string{
+	//}
+
+	err := ValidateArticle(article, &[]string{"~~~REMOVED~~~"})
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_ForbesCom(t *testing.T) {
 	article := Article{
 		Domain:          "forbes.com",
@@ -900,6 +920,26 @@ func Test_TheGuardianCom(t *testing.T) {
 
 	removed := []string{"~~~REMOVED~~~"}
 	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func Test_TheSunCoUk(t *testing.T) {
+	article := Article{
+		Domain:          "thesun.co.uk",
+		Title:           "Chelsea star Eden Hazard eyed by Real Madrid...but only if Gareth Bale leaves this summer",
+		MetaDescription: "Chelsea attacker is high on Zinedine Zidane shopping list as Los Blancos look to spend big after a poor domestic campaign",
+		CleanedText:     "",
+		MetaKeywords:    "chelsea, eden hazard, real madrid, gareth bale, zinedine zidane",
+		CanonicalLink:   "https://www.thesun.co.uk/sport/football/6099276/chelsea-eden-hazard-real-madrid-gareth-bale-leaves-this-summer/",
+		TopImage:        "https://www.thesun.co.uk/wp-content/uploads/2018/04/sport-preview-hazard-and-bale.jpg?strip=all&quality=100&w=1200&h=800&crop=1",
+		MetaLang:        "en",
+	}
+	//article.Links = []string{
+	//}
+
+	err := ValidateArticle(article, &[]string{"~~~REMOVED~~~"})
 	if err != nil {
 		t.Error(err)
 	}
