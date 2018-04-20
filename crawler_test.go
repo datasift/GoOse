@@ -857,6 +857,26 @@ func Test_SlideshareNet(t *testing.T) {
 	}
 }
 
+func Test_SohuCom(t *testing.T) {
+	article := Article{
+		Domain:          "sohu.com",
+		Title:           "2018第二届河南省大学生马拉松赛完赛牌和战袍公布，激情燃烧，助力奔跑！_搜狐体育_搜狐网",
+		MetaDescription: "距离第二届河南省大学生马拉松赛的开赛时间越来越近，紧张激动的情绪逐渐蔓延开来。除了对赛事本身的关注，完赛牌和赛事服装也是大家关心的对象。为了给大家一个惊喜，我们一直在努力着，尽最大的能力把事情做得尽善",
+		CleanedText:     "",
+		MetaKeywords:    "2018,第二届,河南省,大学生,马拉松赛,战袍,公布,激情,燃烧,助力,奔跑",
+		CanonicalLink:   "http://www.sohu.com/a/228940093_738543",
+		TopImage:        "http://sohu-media.bjcnc.scs.sohucs.com/web/static/images/sohu_logo.png",
+		MetaLang:        "zh", // NB: this is detected as cmn (Chinese Mandarin) by the library
+	}
+	//article.Links = []string{}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_SoundCloudCom(t *testing.T) {
 	article := Article{
 		Domain:          "soundcloud2.com",
