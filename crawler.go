@@ -34,6 +34,16 @@ func getCharsetFromContentType(cs string) string {
 	cs = strings.TrimPrefix(cs, "text/html;charset=")
 	cs = strings.TrimPrefix(cs, "text/xhtml;charset=")
 	cs = strings.TrimPrefix(cs, "application/xhtml+xml;charset=")
+	// optional
+	cs = strings.TrimPrefix(cs, "text/plain;charset=")
+	cs = strings.TrimPrefix(cs, "text/xml;charset=")
+	cs = strings.TrimPrefix(cs, "text/javascript;charset=")
+	cs = strings.TrimPrefix(cs, "application/javascript;charset=")
+	cs = strings.TrimPrefix(cs, "application/xml;charset=")
+	cs = strings.TrimPrefix(cs, "application/x-javascript;charset=")
+	cs = strings.TrimPrefix(cs, "application/pdf;charset=")
+	cs = strings.TrimPrefix(cs, "application/rss+xml;charset=")
+	cs = strings.TrimPrefix(cs, "application/atom+xml;charset=")
 	return NormaliseCharset(cs)
 }
 
