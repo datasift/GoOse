@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"github.com/abadojack/whatlanggo"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
 	"gopkg.in/fatih/set.v0"
@@ -106,6 +107,9 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 	shtml := document.Find("html")
 	attr, _ := shtml.Attr("lang")
 	if attr == "" {
+		attr, _ = shtml.Attr("xml:lang")
+	}
+	if attr == "" {
 		attr, _ = document.Attr("lang")
 	}
 	if attr == "" {
@@ -126,18 +130,35 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 		language = attr[0:idx]
 	}
 
+	if !isValidLanguageCode(language) {
+		language = ""
+	}
+
 	//_, hasStopwords := sw[language]
 	//if language == "" || !hasStopwords {
-	if language == "" || !isValidLanguageCode(language) {
-		// fallback to simple stop words-based language detection
-		language = extr.config.stopWords.SimpleLanguageDetector(shtml.Text())
-	}
-	// this should be removed - defaults are dangerous
+	//if language == "" || !isValidLanguageCode(language) {
 	if language == "" {
-		language = defaultLanguage
+		// fallback to simple stop words-based language detection
+		//language = extr.config.stopWords.SimpleLanguageDetector(shtml.Text())
+		info := whatlanggo.Detect(shtml.Text())
+		language = iso6933toIso6931(whatlanggo.LangToString(info.Lang))
+		if "yo" == language {
+			// there's a bias towards Yo when detecting (english) HTML pages
+			info := whatlanggo.Detect(extr.GetTitle(document))
+			language = iso6933toIso6931(whatlanggo.LangToString(info.Lang))
+		}
 	}
 
 	extr.config.targetLanguage = language
+	// this should be removed - defaults are dangerous. 
+	// But the topNode extraction code relies on a language being detected, 
+	// so only setting that internal config property to the default, and returning ""
+	if language == "" {
+		extr.config.targetLanguage = defaultLanguage
+		//language = defaultLanguage
+	}
+
+	//extr.config.targetLanguage = language
 	return language
 }
 
