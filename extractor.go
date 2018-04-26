@@ -103,7 +103,6 @@ func (extr *ContentExtractor) splitTitle(titles []string) string {
 
 // GetMetaLanguage returns the meta language set in the source, if the article has one
 func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string {
-	var language string
 	shtml := document.Find("html")
 	attr, _ := shtml.Attr("lang")
 	if attr == "" {
@@ -123,16 +122,7 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 		})
 	}
 
-	idx := strings.LastIndex(attr, "-")
-	if idx == -1 {
-		language = attr
-	} else {
-		language = attr[0:idx]
-	}
-
-	if !isValidLanguageCode(language) {
-		language = ""
-	}
+	language := extr.NormalizeLanguage(attr)
 
 	//_, hasStopwords := sw[language]
 	//if language == "" || !hasStopwords {
@@ -159,6 +149,20 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 	}
 
 	//extr.config.targetLanguage = language
+	return language
+}
+
+
+func (extr *ContentExtractor) NormalizeLanguage(language string) string {
+	idx := strings.LastIndex(language, "-")
+	if idx != -1 {
+		language = language[0:idx]
+	}
+
+	if !isValidLanguageCode(language) {
+		language = ""
+	}
+
 	return language
 }
 
