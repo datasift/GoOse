@@ -694,6 +694,8 @@ func init() {
 		"zza": struct{}{},
 	}
 
+	// https://github.com/wooorm/iso-639-3
+	// https://github.com/abadojack/whatlanggo/pull/7/files
 	iso6933toiso6931 = map[string]string{
 		"aar": "aa",
 		"abk": "ab",
@@ -701,16 +703,19 @@ func init() {
 		"aka": "ak",
 		"amh": "am",
 		"ara": "ar",
+		"arb": "ar",
 		"arg": "an",
 		"asm": "as",
 		"ava": "av",
 		"ave": "ae",
 		"aym": "ay",
 		"aze": "az",
+		"azj": "az",
 		"bak": "ba",
 		"bam": "bm",
 		"bel": "be",
 		"ben": "bn",
+		"bho": "bh",
 		"bis": "bi",
 		"bod": "bo",
 		"bos": "bs",
@@ -722,7 +727,7 @@ func init() {
 		"che": "ce",
 		"chu": "cu",
 		"chv": "cv",
-		"cmn": "zh",
+		"cmn": "zh", // No iso 639-1, but http://www.loc.gov/standards/iso639-2/faq.html#24
 		"cor": "kw",
 		"cos": "co",
 		"cre": "cr",
