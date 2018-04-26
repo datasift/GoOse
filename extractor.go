@@ -163,7 +163,7 @@ func (extr *ContentExtractor) NormalizeLanguage(language string) string {
 		language = ""
 	}
 
-	return language
+	return strings.ToLower(language)
 }
 
 // GetFavicon returns the favicon set in the source, if the article has one
