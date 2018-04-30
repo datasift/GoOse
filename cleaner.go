@@ -165,6 +165,7 @@ var removeNodesRegEx = regexp.MustCompile("" +
 	"foot|" +
 	"footer|" +
 	"^ga-track$|" +
+	"^gigya-log|" +
 	" google |" +
 	"^gstl_|" +
 	"^GS-UH$|" +
