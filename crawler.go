@@ -5,11 +5,19 @@ import (
 	"log"
 	"net/http"
 	"net/http/cookiejar"
+	"regexp"
 	"strings"
 	"time"
 
 	"github.com/PuerkitoBio/goquery"
 )
+
+var stripCharsetContentTypeRegex *regexp.Regexp
+
+func init() {
+	stripCharsetContentTypeRegex = regexp.MustCompile(`(?m)^(text|application)\/(html|xhtml|xhtml\+xml|plain|javascript|xml|pdf|x\-javascript|rss\+xml|atom\+xml)[;,]+charset=`)
+}
+
 
 // Crawler can fetch the target HTML page
 type Crawler struct {
@@ -31,19 +39,7 @@ func NewCrawler(config Configuration, url string, RawHTML string) Crawler {
 
 func getCharsetFromContentType(cs string) string {
 	cs = strings.ToLower(strings.Replace(cs, " ", "", -1))
-	cs = strings.TrimPrefix(cs, "text/html;charset=")
-	cs = strings.TrimPrefix(cs, "text/xhtml;charset=")
-	cs = strings.TrimPrefix(cs, "application/xhtml+xml;charset=")
-	// optional
-	cs = strings.TrimPrefix(cs, "text/plain;charset=")
-	cs = strings.TrimPrefix(cs, "text/xml;charset=")
-	cs = strings.TrimPrefix(cs, "text/javascript;charset=")
-	cs = strings.TrimPrefix(cs, "application/javascript;charset=")
-	cs = strings.TrimPrefix(cs, "application/xml;charset=")
-	cs = strings.TrimPrefix(cs, "application/x-javascript;charset=")
-	cs = strings.TrimPrefix(cs, "application/pdf;charset=")
-	cs = strings.TrimPrefix(cs, "application/rss+xml;charset=")
-	cs = strings.TrimPrefix(cs, "application/atom+xml;charset=")
+	cs = stripCharsetContentTypeRegex.ReplaceAllString(cs, "")
 	return NormaliseCharset(cs)
 }
 

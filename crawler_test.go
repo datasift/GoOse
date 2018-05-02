@@ -76,6 +76,39 @@ func ValidateArticle(expected Article, removed *[]string) error {
 	return nil
 }
 
+func TestGetCharsetFromContentType(t *testing.T) {
+	tt := []struct {
+		input    string
+		expected string
+	}{
+		{"text/html;charset=UTF-8", "UTF-8"},
+		{"text/html,charset=EUC-KR", "EUC-KR"},
+		{"text/xhtml;charset=UTF-8", "UTF-8"},
+		{"application/xhtml+xml;charset=EUC-KR", "EUC-KR"},
+		{"text/plain;charset=EUC-KR", "EUC-KR"},
+		{"text/xml;charset=EUC-KR", "EUC-KR"},
+		{"text/javascript;charset=EUC-KR", "EUC-KR"},
+		{"application/javascript;charset=EUC-KR", "EUC-KR"},
+		{"application/xml;charset=EUC-KR", "EUC-KR"},
+		{"application/x-javascript;charset=UTF-8", "UTF-8"},
+		{"application/pdf;charset=UTF-8", "UTF-8"},
+		{"application/rss+xml;charset=UTF-8", "UTF-8"},
+		{"application/atom+xml;charset=UTF-8", "UTF-8"},
+	}
+
+	for _, tc := range tt {
+		t.Run(tc.input, func(t *testing.T) {
+			actual := getCharsetFromContentType(tc.input)
+			if actual != tc.expected {
+				t.Errorf("Unexpected result from charset extraction: EXPECTED: %s, ACTUAL: %s", tc.expected, actual)
+			}
+		})
+	}
+
+
+
+}
+
 func Test_AbcNewsGoCom(t *testing.T) {
 	article := Article{
 		Domain:          "abcnews.go.com",
