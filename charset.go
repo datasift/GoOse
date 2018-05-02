@@ -15,7 +15,7 @@ import (
 func NormaliseCharset(characterSet string) string {
 	characterSet = strings.ToUpper(characterSet)
 	switch characterSet {
-	case "UTF8", "UT-8", "UTR-8", "UFT-8", "UTF8-WITHOUT-BOM", "UTF8_GENERAL_CI":
+	case "UTF8", "UT-8", "UTR-8", "UFT-8", "UTF8-WITHOUT-BOM", "UTF8_GENERAL_CI", "UTF-8;":
 		return "UTF-8"
 	// override Japanese
 	// CP943: IBM OS/2 Japanese, superset of Cp932 and Shift-JIS
@@ -23,7 +23,8 @@ func NormaliseCharset(characterSet string) string {
 		return "SHIFT_JIS"
 	// override Korean
 	case "EUC-KR", "MS949", "KSC5601", "WINDOWS-949", "KS_C_5601-1987", "KSC_5601":
-		return "UHC"
+		//return "UHC"
+		return "EUC-KR"
 	// override Thai
 	//case "TIS-620", "WINDOWS-874":
 	//	return "ISO-8859-11"
