@@ -89,5 +89,5 @@ func UTF8encode(raw string, sourceCharset string) string {
 		_, width := utf8.DecodeRuneInString(raw[in:])
 		in += width
 	}
-	return string(dst)
+	return string(dst[:out])
 }
