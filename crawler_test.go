@@ -764,6 +764,26 @@ func Test_LinkedinCom(t *testing.T) {
 	}
 }
 
+func Test_NavatelanganaCom(t *testing.T) {
+	article := Article{
+		Domain:          "navatelangana.com",
+		Title:           "బ్రహ్మోస్‌ క్షిపణిని ప్రయోగం సక్సెస్‌!",
+		MetaDescription: "",
+		CleanedText:     "",
+		MetaKeywords:    "",
+		CanonicalLink:   "",
+		TopImage:        "",
+		MetaLang:        "te", // Telegu (India)
+	}
+	//article.Links = []string{""}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_NyTimesCom(t *testing.T) {
 	article := Article{
 		Domain:          "nytimes.com",
