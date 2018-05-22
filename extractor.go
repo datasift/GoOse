@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
-	"github.com/abadojack/whatlanggo"
+	"github.com/kapsteur/franco"
 	"golang.org/x/net/html"
 	"golang.org/x/net/html/atom"
 	"gopkg.in/fatih/set.v0"
@@ -129,19 +129,40 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 	//if language == "" || !isValidLanguageCode(language) {
 	if language == "" {
 		// fallback to simple stop words-based language detection
-		//language = extr.config.stopWords.SimpleLanguageDetector(shtml.Text())
-		info := whatlanggo.Detect(shtml.Text())
-		language = iso6933toIso6931(whatlanggo.LangToString(info.Lang))
-		if "yo" == language {
-			// there's a bias towards Yo when detecting (english) HTML pages
-			info := whatlanggo.Detect(extr.GetTitle(document))
-			language = iso6933toIso6931(whatlanggo.LangToString(info.Lang))
+
+		// Try the title first if long enough, or the description.
+		// The full page is often noisy.
+		text := extr.GetTitle(document)
+		//log.Println("Lang from title", len(text), text)
+		if len(text) < 20 {
+			//log.Println("Override with desc")
+			text = extr.GetMetaDescription(document)
 		}
+		if len(text) < 30 {
+			//log.Println("Override with full body")
+			text = shtml.Text()
+		}
+
+		/*
+			// using built-in language detector. Very imprecise.
+			language = extr.config.stopWords.SimpleLanguageDetector(shtml.Text())
+
+			// using "github.com/abadojack/whatlanggo"
+			info := whatlanggo.Detect(text)
+			language = iso6933toIso6931(whatlanggo.LangToString(info.Lang))
+			if "yo" == language {
+				// there's a bias towards Yo when detecting (english) HTML pages
+				info := whatlanggo.Detect(extr.GetTitle(document))
+				language = iso6933toIso6931(whatlanggo.LangToString(info.Lang))
+			}
+		*/
+		res := franco.DetectOne(text)
+		language = iso6933toIso6931(res.Code)
 	}
 
 	extr.config.targetLanguage = language
-	// this should be removed - defaults are dangerous. 
-	// But the topNode extraction code relies on a language being detected, 
+	// this should be removed - defaults are dangerous.
+	// But the topNode extraction code relies on a language being detected,
 	// so only setting that internal config property to the default, and returning ""
 	if language == "" {
 		extr.config.targetLanguage = defaultLanguage
@@ -152,7 +173,8 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 	return language
 }
 
-
+// NormalizeLanguage lowercases the language code, and checks that is in
+// a whitelist of recognised language codes
 func (extr *ContentExtractor) NormalizeLanguage(language string) string {
 	idx := strings.LastIndex(language, "-")
 	if idx != -1 {

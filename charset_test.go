@@ -41,14 +41,14 @@ func TestNormaliseCharset(t *testing.T) {
 	}
 
 	characterSet = "MS949" // Korean
-	expected = "UHC"
+	expected = "EUC-KR"
 	actual = NormaliseCharset(characterSet)
 	if expected != actual {
 		t.Errorf("Was expecting '%s', got '%s'", expected, actual)
 	}
 
 	characterSet = "KSC5601" // Korean
-	expected = "UHC"
+	expected = "EUC-KR"
 	actual = NormaliseCharset(characterSet)
 	if expected != actual {
 		t.Errorf("Was expecting '%s', got '%s'", expected, actual)

@@ -1,6 +1,6 @@
 package goose
 
-// whitelist of valid language codes, according to 
+// whitelist of valid language codes, according to
 // http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 
 // ISO 639-1: two-letter codes
@@ -839,6 +839,7 @@ func init() {
 		"rus": "ru",
 		"sag": "sg",
 		"san": "sa",
+		"sco": "en", // Added 2018-05-22
 		"sin": "si",
 		"slk": "sk",
 		"slv": "sl",

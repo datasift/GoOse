@@ -105,8 +105,6 @@ func TestGetCharsetFromContentType(t *testing.T) {
 		})
 	}
 
-
-
 }
 
 func Test_AbcNewsGoCom(t *testing.T) {
@@ -705,6 +703,26 @@ func Test_IncCom(t *testing.T) {
 		"http://www.inc.com/ravin-gandhi/why-entrepreneurship-is-a-lifestyle.html",
 		"http://www.inc.com/gary-vaynerchuk/askgaryvee-episode-86-hard-work-and-hustle.html",
 	}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func Test_kacherenCom(t *testing.T) {
+	article := Article{
+		Domain:          "kacheren.com",
+		Title:           "盛夏特惠席卷！长安跨越购车大促销！",
+		MetaDescription: "盛夏特惠席卷！长安跨越购车大促销！ ,卡车人论坛",
+		CleanedText:     "",
+		MetaKeywords:    "盛夏特惠席卷！长安跨越购车大促销！",
+		CanonicalLink:   "http://www.kacheren.com/bbs/read-htm-tid-143983-page-1.html",
+		TopImage:        "http://www.kacheren.com/bbs/static/image/common/back_footer.png",
+		MetaLang:        "zh",
+	}
+	//article.Links = []string{}
 
 	removed := []string{"~~~REMOVED~~~"}
 	err := ValidateArticle(article, &removed)
