@@ -136,6 +136,26 @@ func Test_AbcNewsGoCom(t *testing.T) {
 	}
 }
 
+func Test_AdaLk(t *testing.T) {
+	article := Article{
+		Domain:          "ada.lk",
+		Title:           "Ada",
+		MetaDescription: "",
+		CleanedText:     "",
+		MetaKeywords:    "",
+		CanonicalLink:   "",
+		TopImage:        "http://static2.ada.lk/adaadmin/wp-content/uploads/You-I-logo.jpg",
+		MetaLang:        "si", // Sinhala
+	}
+	//article.Links = []string{}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_BbcCom(t *testing.T) {
 	article := Article{
 		Domain:          "bbc.com",
@@ -343,6 +363,26 @@ func Test_DailyMailCoUk(t *testing.T) {
 	article.Links = []string{
 		"http://www.standard.co.uk/news/uk/tesco-is-giving-out-paper-bags-to-dodge-the-5p-carrier-bag-charge-a3112131.html",
 	}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func Test_DiaridegironaCat(t *testing.T) {
+	article := Article{
+		Domain:          "diaridegirona.cat",
+		Title:           "Valtonyc fuig d'Espanya per evitar la presó el dia que l'anuncia l'(a)phònica",
+		MetaDescription: "Valtonyc ha abandonat l'Estat espanyol per evitar entrar a presó. El festival (a)phònica de Banyoles va donar ahir a conèixer tots els detalls de la programació del que serà la 15a edició, que incloïa també l'actuació de Valtonyc, el raper que ha d'e",
+		CleanedText:     "",
+		MetaKeywords:    "Valtonyc,fuig,dEspanya,evitar,preso,lanuncia,laphonica,Cultura,noticia,noticies,noticies avui,diari de girona,catalunya,diari catala,diari.",
+		CanonicalLink:   "http://www.diaridegirona.cat/cultura/2018/05/24/valtonyc-fuig-despanya-evitar-preso/915484.html",
+		TopImage:        "https://fotos00.diaridegirona.cat/2018/05/23/690x278/valtonyc-fuig.jpg",
+		MetaLang:        "ca",
+	}
+	//article.Links = []string{}
 
 	removed := []string{"~~~REMOVED~~~"}
 	err := ValidateArticle(article, &removed)
@@ -804,6 +844,27 @@ func Test_NavatelanganaCom(t *testing.T) {
 	}
 }
 
+func Test_NewsDirectrixRu(t *testing.T) {
+	article := Article{
+		Domain: "news.directrix.ru",
+		// NB: the HTML page declares the wrong charset (windows-1251 instead of UTF-8, so when converting to UTF-8 the russian characters are mangled)
+		Title:           "РћРґРЅРѕРј РёР· РїР°СЂРєРѕРІ РІ Р‘Р°РіРґР°РґРµ РїСЂРѕРёР·РѕС€РµР",                                                                                                           //"Одном из парков в Багдаде произошел взрыв, погибли семь человек, обзоры сми на бизнес-портале Directrix.ru",
+		MetaDescription: "РћРґРЅРѕРј РёР· РїР°СЂРєРѕРІ РІ Р‘Р°РіРґР°РґРµ РїСЂРѕРёР·РѕС€РµР» РІР·СЂС‹РІ, РїРѕРіРёР±Р»Рё СЃРµРјСЊ С‡РµР»РѕРІРµРє - РЅРѕРІРѕСЃС‚Рё РёР· РєР°С‚РµРіРѕСЂРёРё Р’ РјРёСЂРµ.", //Одном из парков в Багдаде произошел взрыв, погибли семь человек - новости из категории В мире.",
+		CleanedText:     "",
+		MetaKeywords:    "РћРґРЅРѕРј РёР· РїР°СЂРєРѕРІ РІ Р‘Р°РіРґР°РґРµ РїСЂРѕРёР·РѕС€РµР» РІР·СЂС‹РІ, РїРѕРіРёР±Р»Рё СЃРµРјСЊ С‡РµР»РѕРІРµРє, РЅРѕРІРѕСЃС‚Рё Р’ РјРёСЂРµ", //"Одном из парков в Багдаде произошел взрыв, погибли семь человек, новости В мире",
+		CanonicalLink:   "http://news.directrix.ru/odnom_iz_parkov_v_bagdade_proizoshel_vzryv_pogibli_sem_chelovek.html",
+		TopImage:        "http://www.findnews.ru/news/img/8962334_0.jpg",
+		MetaLang:        "ru",
+	}
+	//article.Links = []string{""}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_NyTimesCom(t *testing.T) {
 	article := Article{
 		Domain:          "nytimes.com",
@@ -1218,6 +1279,26 @@ func Test_YouTubeCom(t *testing.T) {
 		CanonicalLink:   "https://www.youtube.com/watch?v=KO_3Qgib6RQ",
 		TopImage:        "https://i.ytimg.com/vi/KO_3Qgib6RQ/hqdefault.jpg",
 		MetaLang:        "en",
+	}
+	//article.Links = []string{""}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+func Test_WapCnkiNet(t *testing.T) {
+	article := Article{
+		Domain:          "wap.cnki.net",
+		Title:           "中兴危机峰回路转-北京商报-手机知网",
+		MetaDescription: "中兴危机峰回路转,中兴,特朗普,商务部官员,芯片公司,运营商,华为,北京商报,石飞,核心芯片,联发科,,北京商报讯（记者 石飞月）距离美国商务部制裁中兴已经过去近一个月，当业内认为交涉还在进行中时，美国总统特朗普发布的一条推...",
+		CleanedText:     "",
+		MetaKeywords:    "中兴危机峰回路转,中兴,特朗普,商务部官员,芯片公司,运营商,华为,北京商报,石飞,核心芯片,联发科,,免费阅读下载",
+		CanonicalLink:   "",
+		TopImage:        "http://wap.cnki.net/touch/resource/image/banner.png",
+		MetaLang:        "en", // NB: this is the declared language, but it is clearly wrong
 	}
 	//article.Links = []string{""}
 
