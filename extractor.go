@@ -105,14 +105,7 @@ func (extr *ContentExtractor) splitTitle(titles []string) string {
 
 // GetMetaLanguage returns the meta language set in the source, if the article has one
 func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string {
-	shtml := document.Find("html")
-	attr, _ := shtml.Attr("lang")
-	if attr == "" {
-		attr, _ = shtml.Attr("xml:lang")
-	}
-	if attr == "" {
-		attr, _ = document.Attr("lang")
-	}
+	attr, _ := document.Attr("lang")
 	if attr == "" {
 		document.Find("meta").EachWithBreak(func(i int, s *goquery.Selection) bool {
 			attr2, exists := s.Attr("http-equiv")
@@ -124,7 +117,20 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 		})
 	}
 
+	if attr == "" {
+		shtml := document.Find("html")
+		attr, _ = shtml.Attr("lang")
+		if attr == "" {
+			attr, _ = shtml.Attr("xml:lang")
+		}
+		//log.Println("Lang from html:lang", attr)
+		//} else {
+		//log.Println("Lang from content-language", attr)
+	}
+
 	language := extr.NormalizeLanguage(attr)
+
+	//log.Println("Lang declared", language, attr)
 
 	//_, hasStopwords := sw[language]
 	//if language == "" || !hasStopwords {
@@ -137,12 +143,16 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 		text := extr.GetTitle(document)
 		//log.Println("Lang from title", len(text), text)
 		if len(text) < 20 {
-			//log.Println("Override with desc")
+			//log.Println("Override with description")
 			text = extr.GetMetaDescription(document)
+		}
+		if len(text) < 20 {
+			text = extr.GetMetaContent(document, "og:description")
+			//log.Println("Override with og:description:  ", text)
 		}
 		if len(text) < 30 {
 			//log.Println("Override with full body")
-			text = shtml.Text()
+			text = document.Find("html").Text()
 		}
 
 		/*
@@ -217,6 +227,9 @@ func (extr *ContentExtractor) GetMetaContent(document *goquery.Document, metaNam
 	content := ""
 	document.Find("meta").EachWithBreak(func(i int, s *goquery.Selection) bool {
 		attr, exists := s.Attr("name")
+		if !exists {
+			attr, exists = s.Attr("property") // alias
+		}
 		if exists && attr == metaName {
 			content, _ = s.Attr("content")
 			return false
@@ -237,6 +250,9 @@ func (extr *ContentExtractor) GetMetaContents(document *goquery.Document, metaNa
 	counter := metaNames.Size()
 	document.Find("meta").EachWithBreak(func(i int, s *goquery.Selection) bool {
 		attr, exists := s.Attr("name")
+		if !exists {
+			attr, exists = s.Attr("property") // alias
+		}
 		if exists && metaNames.Has(attr) {
 			content, _ := s.Attr("content")
 			contents[attr] = content
