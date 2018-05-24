@@ -229,6 +229,28 @@ func Test_BizJournalsCom(t *testing.T) {
 	}
 }
 
+/*
+func Test_BlogCanpanInfo(t *testing.T) {
+	article := Article{
+		Domain:          "blog.canpan.info",
+		Title:           "5月23日（水）-笹川陽平ブログ（日本財団会長）",
+		MetaDescription: "",
+		CleanedText:     "",
+		MetaKeywords:    "",
+		CanonicalLink:   "",
+		TopImage:        "http://media.bizj.us/view/img/2167041/mason-morfit*400xx306-307-0-25.jpg",
+		MetaLang:        "ja", // unfortunately this is currently recognised as zh
+	}
+	article.Links = []string{}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+*/
+
 func Test_BlogSpotCoUK(t *testing.T) {
 	article := Article{
 		Domain:          "blogspot.co.uk",
@@ -371,6 +393,26 @@ func Test_DailyMailCoUk(t *testing.T) {
 	}
 }
 
+func Test_DailyMailCoUk2(t *testing.T) {
+	article := Article{
+		Domain:          "dailymail.co.uk.2",
+		Title:           "England midfielder Ruben Loftus-Cheek relishing World Cup challenge",
+		MetaDescription: "Ruben Loftus-Cheek enjoyed the pressure and responsibility of trying to keep Crystal Palace up - and relishes the added load that comes with playing for England at the World Cup.",
+		CleanedText:     "",
+		MetaKeywords:    "England,midfielder,Ruben,Loftus,Cheek,relishing,World,Cup,challenge",
+		CanonicalLink:   "http://www.dailymail.co.uk/sport/football/article-5764541/England-midfielder-Ruben-Loftus-Cheek-relishing-World-Cup-challenge.html",
+		TopImage:        "http://i.dailymail.co.uk/i/newpix/2018/05/23/23/4C8C357300000578-0-image-a-28_1527113316154.jpg",
+		MetaLang:        "en",
+	}
+	//article.Links = []string{}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_DiaridegironaCat(t *testing.T) {
 	article := Article{
 		Domain:          "diaridegirona.cat",
@@ -381,6 +423,27 @@ func Test_DiaridegironaCat(t *testing.T) {
 		CanonicalLink:   "http://www.diaridegirona.cat/cultura/2018/05/24/valtonyc-fuig-despanya-evitar-preso/915484.html",
 		TopImage:        "https://fotos00.diaridegirona.cat/2018/05/23/690x278/valtonyc-fuig.jpg",
 		MetaLang:        "ca",
+	}
+	//article.Links = []string{}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
+// this test works on a website that embeds someone else's content like a frame
+func Test_EpaperNavbharattimesWithFrame(t *testing.T) {
+	article := Article{
+		Domain:          "epaper.navbharattimes.com",
+		Title:           "Details",
+		MetaDescription: "",
+		CleanedText:     "",
+		MetaKeywords:    "",
+		CanonicalLink:   "",
+		TopImage:        "/images/dnsenlarge.gif",
+		MetaLang:        "hi",
 	}
 	//article.Links = []string{}
 

@@ -1,0 +1,489 @@
+<!-- http://epaper.navbharattimes.com/details/75643-69595-2.html -->
+
+
+<html>
+<head>
+    <title>Details</title>
+	
+	<link href="../css/main.css" type="text/css" rel="stylesheet">
+    <style>
+        writerName
+        {
+            font-family: Mangal;
+            font-size: 11px;
+            font-weight: bold;
+            color: #000000;
+            text-decoration: none;
+        }
+		.goto_home
+		{
+			background:url('../images/make_payment_button.png') no-repeat;
+			height:57px;
+			width:207px;
+			border:none;
+			cursor:pointer;
+			color:#FFF;
+			font-size:18px;
+		}
+    </style>
+    <script language="javascript">		
+		function readoutfeature()
+		{
+			newspaper_view1(Form1.boxid1.value,Form1.parentid1.value);
+		}
+		/*function spage(pgno,ixml)
+		{
+		alert('hit');
+		alert(pgno);
+		alert(ixml);
+		alert(parent.document.getElementById('txtpageno'));
+		parent.document.getElementById('txtpageno').value=pgno
+		parent.document.getElementById('txtparentid').value=ixml
+		//parent.document.frames(
+		//window.location.href("epapermain.aspx?pageno=" + pgno + "parentid=" + ixml);
+		//window.navigate("epapapermain.aspx?pageno=" + pgno + "parentid=" + ixml)
+		//document.forms(0).txtpageno.value=pgno;
+		//document.forms(0).txtparentid.value=ixml;
+		//alert('hit');
+		//document.forms(0).submit();	
+		}*/
+
+		function newspaper_view1(a,b)
+		{
+			if (document.all)
+			{
+			//alert('hi i m from newspaper_view1 if condition');
+			//alert(a);
+			//alert(b);
+				var url="test.aspx?boxid2=" + a +"&parentid2=" + b
+				//alert(headeMChanged1);
+				xmlHttp=GetXmlHttpObject(headeMChanged1)
+				xmlHttp.open("GET", url , true)
+				xmlHttp.send(null)
+			}
+			else
+			{
+			//alert('hi i m from newspaper_view1 else condition');
+				var url="test.aspx?boxid2=" + a +"&parentid2=" + b
+				var url="newspaperview.aspx"
+				xmlHttp=GetXmlHttpObject(headeMChanged1)
+				xmlHttp.open("GET", url , true)
+				xmlHttp.send(null)
+			}
+		}
+
+		function headeMChanged1() 
+		{ 
+		//alert('hit from ashihs');
+			if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+			{ 
+				var rp2 = xmlHttp.responseText 
+				
+				
+				//alert(rp2);
+			
+					readout(rp2);
+				
+				
+			} 
+		} 
+
+
+
+		function readout1()
+		{
+			var aa,bb
+			aa=Form1.boxid1.value;
+			bb=Form1.parentid1.value;
+			readout(aa,bb)	
+		}		
+		
+	
+	function R1024()
+			{
+			if(document.getElementById('txtarticle').value=="Image")
+			{
+				return false;
+			}
+			 if(document.getElementById('zoomimage').innerHTML.indexOf('body11')>0)
+			{
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('body11','body2');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('haedlinesstor1','haedlinesstor2');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('subheadlinesstor1','subheadlinesstor2');	
+			//alert(document.getElementById('zoomimage').innerHTML);
+			}
+			else
+			{
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('bodyd','body2');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('haedlinesstory','haedlinesstor2');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('subheadlinesstor2','subheadlinesstor2');	
+			//alert(document.getElementById('zoomimage').innerHTML);
+			}
+		}
+					function R800()
+			{
+			if(document.getElementById('txtarticle').value=="Image")
+			{
+				return false;
+			}
+			//alert(document.getElementById('zoomimage').innerHTML);
+			if(document.getElementById('zoomimage').innerHTML.indexOf('body2')>0)
+			{
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('body2','body11');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('haedlinesstor2','haedlinesstor1');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('subheadlinesstor2','subheadlinesstor1');	
+				//alert(document.getElementById('zoomimage').innerHTML);
+			}
+			/*else if(document.getElementById('zoomimage').innerHTML.indexOf('body11')>0)
+			{
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('body11','body2');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('haedlinesstor1','haedlinesstor2');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('subheadlinesstor1','subheadlinesstor2');	
+				//alert(document.getElementById('zoomimage').innerHTML);
+			}*/
+			else
+			{
+				document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('bodyd','body11');
+				document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('haedlinesstory','haedlinesstor1');
+				document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('subheadlinesstor2','subheadlinesstor1');	
+				//alert(document.getElementById('zoomimage').innerHTML);
+			}
+			
+			}
+
+			function R640()
+			{
+			if(document.getElementById('txtarticle').value=="Image")
+			{
+				return false;
+			}
+			//alert(document.getElementById('zoomimage').innerHTML);
+			if(document.getElementById('zoomimage').innerHTML.indexOf('body11')>0)
+			{
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('body11','bodyd');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('haedlinesstor1','haedlinesstory');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('subheadlinesstor1','subheadlinesstory');	
+			//	alert(document.getElementById('zoomimage').innerHTML);
+			}
+			if(document.getElementById('zoomimage').innerHTML.indexOf('body2')>0)
+			{
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('body2','bodyd');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('haedlinesstor2','haedlinesstory');
+			document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('subheadlinesstor2','subheadlinesstory');	
+			
+			}
+			//document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('class=bodyd','class=body11');
+			//document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('class=haedlinesstory','class=haedlinesstor1');
+			//document.getElementById('zoomimage').innerHTML=document.getElementById('zoomimage').innerHTML.replace('class=subheadlinesstor2','class=subheadlinesstor1');	
+			}
+			
+			function hide()
+			{
+				document.getElementById('divrate').style.visibility="visible";
+			}
+		
+						
+		function star()
+		{
+			if(document.getElementById('Rb2').checked)
+			{
+			document.getElementById('Img2').style.visibility="visible";
+			}
+			else if(document.getElementById('Rb3').checked)
+			{
+			document.getElementById('Img2').style.visibility="visible";
+			document.getElementById('Img3').style.visibility="visible";
+			}
+			else if(document.getElementById('Rb4').checked)
+			{
+			document.getElementById('Img2').style.visibility="visible";
+			document.getElementById('Img3').style.visibility="visible";
+			document.getElementById('Img4').style.visibility="visible";
+			}
+			else if(document.getElementById('Rb5').checked)
+			{
+			document.getElementById('Img2').style.visibility="visible";
+			document.getElementById('Img3').style.visibility="visible";
+			document.getElementById('Img4').style.visibility="visible";
+			document.getElementById('Img5').style.visibility="visible";
+			}
+	alert("Thanks For Your Rating!");
+	document.getElementById('divrate').style.visibility="hidden";
+	return true;
+	}
+			function openbigwin(url1)
+			{
+			//window.open("displayimmage.htm");
+			 var x=window.open("displayimmage.htm","","toolbar=no,location=0,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,top=0,left=0,width=600,height=560,titlebar=yes");	
+			 //x.document.getElementById("content").innerHTML="<table id='danish'><tr><td><img src='" + url1 + "'></td></tr><tr><td align='right'><br><br><font face='arial' style='CURSOR:hand;' size=1 onclick='window.close()'>Close</font>&nbsp;&nbsp;&nbsp;</td></tr></table>";
+			 if(x.document.images.length==0)
+			{
+				x.document.write("<table id='danish'><tr><td><img src='" + url1 + "'></td></tr>");
+				x.document.write("<tr><td align='right'><br><br><font face='arial' style='CURSOR:hand;' size=1 onclick='window.close()'>Close</font>&nbsp;&nbsp;&nbsp;</td></tr></table>");
+			}
+		}
+var xmlHttp
+function GetXmlHttpObject()
+{var xmlHttp=null;try
+{xmlHttp=new XMLHttpRequest();}
+catch(e)
+{try
+{xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");}
+catch(e)
+{xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");}}
+return xmlHttp;}
+function textview11(val)
+{
+xmlHttp=GetXmlHttpObject()
+if(xmlHttp==null)
+{alert("Browser does not support HTTP Request")
+return}
+var url="detailajax.php";
+url=url+"?texvalue="+val;
+url=url+"&sid="+Math.random()	
+xmlHttp.onreadystatechange=textviewstate
+xmlHttp.open("GET",url,true)
+xmlHttp.send(null)
+}
+function textviewstate()
+{if(xmlHttp.readyState==4||xmlHttp.readyState=="complete")
+{
+	alert(xmlHttp.responseText);
+	document.getElementById("lblmatter").innerHTML=xmlHttp.responseText}}
+
+function imageview(val)
+{
+var val1= location.href=val;
+alert(val1)
+return false;
+}
+function textview(val)
+{
+alert(document.getElementById('lblmatter').innerHTML)
+
+//document.getElementById('lblmatter').innerHTML = '<span style="font-family:Mangal;" class="Detail" id="lblmatter">'+val+'</span>';
+}
+</script>
+<script type="text/javascript">
+function fbshare(url)
+{
+	window.open ("http://www.facebook.com/share.php?u="+url,"Facebook_Share","menubar=1,resizable=1,width=900,height=500");
+	//window.open("http://www.javascript-coder.com","mywindow","menubar=1,resizable=1,width=900,height=500");
+}
+</script>
+<script type="text/javascript">
+function twitter(url)
+{
+	window.open("https://twitter.com/share?url="+url,"mywindow","menubar=1,resizable=1,width=900,height=500");
+	
+}
+</script>
+<script type="text/javascript">
+function googleplus(url)
+{
+	window.open("https://plus.google.com/share?url="+url,"mywindow","menubar=1,resizable=1,width=900,height=500");
+	
+}
+</script>
+<script type="text/javascript">
+function gotohome()
+{	
+	var pathurl = window.location.pathname.split( '/' );
+	window.open(window.location.protocol + "//" + window.location.host + "/" + pathurl[0],'_blank');
+	window.close();
+}
+</script>
+<!-- Begin google-analytics code -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-429254-3', 'auto', {'allowLinker': true});
+  ga('require', 'linker');
+  ga('linker:autoLink', ['nbt.in', 'superpacer.in', 'indiatimes.com'] );
+  ga('send', 'pageview');
+
+</script>
+<!-- End google-analytics code -->
+</head>
+<body style="margin: 0px;">
+<script> var menu1=new Array(); menu1[0]='<a href=../paper/1-@-24@05@2018-.html target=_blank>May,24,2018,Thu</a>'; menu1[1]='<a href=../paper/1-@-23@05@2018-.html target=_blank>May,23,2018,Wed</a>'; menu1[2]='<a href=../paper/1-@-22@05@2018-.html target=_blank>May,22,2018,Tue</a>'; menu1[3]='<a href=../paper/1-@-21@05@2018-.html target=_blank>May,21,2018,Mon</a>'; menu1[4]='<a href=../paper/1-@-20@05@2018-.html target=_blank>May,20,2018,Sun</a>'; menu1[5]='<a href=../paper/1-@-19@05@2018-.html target=_blank>May,19,2018,Sat</a>'; menu1[6]='<a href=../paper/1-@-18@05@2018-.html target=_blank>May,18,2018,Fri</a>'; menu1[7+1]='<a onclick=archives11(,,,) href=#>More Archives</a>' </script><!-- <div id="bottomyuva" >
+<div class="yuvabottombar"  id="Div1" ></div>
+</div>-->
+    <form id="Form1" method="post" runat="server">
+    <table cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" width="100%">
+        <tr>
+            <td >
+               <table style="float: left;">
+	<tr>
+		<td valign="top">
+			<img  onclick="gotohome();" style="cursor:pointer;"  src="../images/logo.jpg">
+		</td>
+	</tr>
+</table>
+<table style="float: left; margin-top:20px;" >
+	<tr >
+		<td >
+		<center></center>
+		</td>	
+		
+				<td >
+			<img   src="../images/imageview-dt.jpg" onClick="location.href='../details/75643-69595-1.html'"  style='cursor:pointer;padding-top: 9px;'/>
+		</td>	
+				<td>
+			<img  id="btncomment" src="../images/comment-dt.jpg" style="cursor:pointer;" onClick="location.href='../comment/75643-69595-1.html'" />
+		</td>
+		<td>
+			<img  id="btnemail" src="../images/email-dt.jpg" style="cursor:pointer;" onClick="location.href='../mail/75643-69595-1.html'"/>
+			
+		</td>
+		<td>
+			<img id="btnprint" style="cursor:pointer;" src="../images/print-dt.jpg" onClick="window.open('../print/75643-69595-2.html')">
+		</td>
+	</tr>
+</table>
+<!-- Google Ad Script--->
+	<!-- Lotame audience extraction script for ad-targeting -->
+	<script type='text/javascript' src="http://ad.crwdcntrl.net/5/c=2800/pe=y/var=_ccaud"></script>
+	<!-- End lotame audience extraction-->
+	<script type='text/javascript'>
+	var googletag = googletag || {};
+	googletag.cmd = googletag.cmd || [];
+	(function() {
+	var gads = document.createElement('script');
+	gads.async = true;
+	gads.type = 'text/javascript';
+	var useSSL = 'https:' == document.location.protocol;
+	gads.src = (useSSL ? 'https:' : 'http:') + 
+	'//www.googletagservices.com/tag/js/gpt.js';
+	var node = document.getElementsByTagName('script')[0];
+	node.parentNode.insertBefore(gads, node);
+	})();
+	</script>
+
+	<script type='text/javascript'>
+	googletag.cmd.push(function() {
+	<!-- Audience Segment Targeting -->
+	var _auds = new Array();
+	if(typeof(_ccaud)!='undefined') {
+	for(var i=0;i<_ccaud.Profile.Audiences.Audience.length;i++)
+	if(i<200)
+	_auds.push(_ccaud.Profile.Audiences.Audience[i].abbr);
+	}
+	<!-- End Audience Segment Targeting -->
+
+	<!-- Contextual Targeting -->
+	var _HDL = '';
+	var _ARC1 = '';
+	var _Hyp1 = '';
+	var _article = '';
+	var _tval = function(v) {
+	if(typeof(v)=='undefined') return '';
+	if(v.length>100) return v.substr(0,100);
+	return v;
+	}
+	<!-- End Contextual Targeting -->
+	googletag.defineSlot('/7176/NBT_Epaper/NBT_EP_ROS/NBT_EP_ROS_AL/NBT_EP_ROS_ATF_AL_160', [160, 600], 'div-gpt-ad-1423044770187-0').addService(googletag.pubads());
+	googletag.defineSlot('/7176/NBT_Epaper/NBT_EP_ROS/NBT_EP_ROS_AL/NBT_EP_ROS_ATF_ROS_AL_728', [[728, 90], [1003, 90]], 'div-gpt-ad-1421152791555-1').addService(googletag.pubads());
+	googletag.pubads().setTargeting('sg', _auds).setTargeting('HDL', _tval(_HDL)).setTargeting('ARC1', _tval(_ARC1)).setTargeting('Hyp1', _tval(_Hyp1)).setTargeting('article', _tval(_article)); 
+	googletag.pubads().enableSingleRequest();
+	googletag.pubads().collapseEmptyDivs(); googletag.enableServices();
+	});
+	</script>
+	<!-- End GoogleAd Script-->
+
+<span style="width:728px; height:90px; padding:10px 20px">
+	<div id='div-gpt-ad-1421152791555-1'>
+	<script type='text/javascript'>
+	googletag.cmd.push(function() { googletag.display('div-gpt-ad-1421152791555-1'); });
+	</script>
+	</div>
+</span>
+
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <hr style="height: 1px; margin: 0px; padding: 0px;" />
+            </td>
+        </tr>
+       <tr>
+            <td id="zoomimage" valign="top" id='getimage'>
+							    <span style="font-family:Mangal;padding:0 5px;width:80%;float:left;" class="Detail" id="lblmatter"><table width="100%">
+<tr><td><p class="haedlinesstory"> बाप-बेटे पर GST टैक्स चोरी का आरोप, अरेस्ट</p></td></tr><tr><td><table align='left'><tr><td><img align='left' src='../epaperimages/24052018/24052018-md-ncr-7-69595-1-small.jpg'/></td></tr><tr><td><img src="../images/dnsenlarge.gif" class='hand1'  align="right" onclick="openbigwin('../epaperimages/24052018/24052018-md-ncr-7-69595-1-large.jpg','Large Image','Large Image')"></td></tr></table>
+<font face="arial" color="2c2c2c" class="bodyd">क्या है मामला <br><br><br>दरअसल शाहदरा के कारोबारी ने इनपुट क्रेडिट लेने के लिए फर्जी कंपनियों के जरिये फर्जी बिल बनवाया। फिर उन बिलों के जरिये इनपुट क्रेडिट लेने के लिए अप्लाई भी कर दिया। इस दौरान माल की कोई आवाजाही नहीं हुई, बल्कि कागजों में ही सब कुछ दिखाया गया। इन बिलों को देखकर जीएसटी कमिशन को संदेह हुआ और बिल में दिये गये पते के आधार पर कई जगह पर सर्च आपरेशन किया गया। जब बिल फर्जी पाया गया तो फिर कारोबारी और उसके बेटे को गिरफ्तार किया गया। यह गिरफ्तारी सीजीएसटी एक्ट के सेक्शन 69 (1) के तहत की गई। इस एक्ट में यह कहा गया है कि अगर कोई माल की सप्लाई किए बिना बिल देता है या इनपुट क्रेडिट का दावा करता है तो उसके खिलाफ कार्रवाई की जा सकती है। अगर टैक्स चोरी की राशि 5 करोड़ रुपये ज्यादा है तो गिरफ्तारी गैर-जमानती होगी।• विस, नई दिल्ली: राजधानी में जीएसटी की चोरी का ऐसा पहला मामला सामने आया है, जिसमें गिरफ्तारी की गई है। टैक्स चोरी के आरोप में शाहदरा के कारोबारी बाप और बेटे को अरेस्ट किया गया है। इनका कारोबार कॉपर ट्रेडिंग से संबंधित है। मामला इनपुट क्रेडिट का लाभ फर्जी बिलों के जरिये लेने का है। गिरफ्तारी सेंट्रल जीएसटी ईस्ट कमिश्नर ने की है। कुल टैक्स चोरी 28 करोड़ रुपये की बताई गई है, जो और बढ़ने की आशंका है। गौरतलब है कि जुलाई 2017 में जीएसटी के लागू होने के बाद दिल्ली में जीएसटी चोरी के मामले में यह पहली गिरफ्तारी हुई है।<br></font></td></tr>
+</table></span>
+								<span id='div-gpt-ad-1423044770187-0' style='width:160px; height:600px;float:left;margin: 5px 0 0 10px;'>
+				<script type='text/javascript'>
+				googletag.cmd.push(function() { googletag.display('div-gpt-ad-1423044770187-0'); });
+				</script>
+				</span>
+            </td>
+            <td valign="top" >
+				
+                <!-- Javascript tag: -->
+                <!-- begin ZEDO for channel: udayavani_banner , publisher: UDAYAVANI , Ad Dimension: Wide Skyscraper - 160 x 600 -->
+
+                
+
+                <!-- end ZEDO for channel: udayavani_banner , publisher: UDAYAVANI , Ad Dimension: Wide Skyscraper - 160 x 600 -->
+            </td>
+        </tr>
+        <tr>
+            <td style="margin-left: 20px; padding-left: 3px;">
+                <table cellspacing="0" cellpadding="0" bgcolor="#ffffff" border="0" bordercolor="#ff0066">
+                    <tr>
+                       
+                        <td style="background: url(images/top-right.jpg) no-repeat;" align="left" width="390px"
+                            height="45px" align="center">
+                            
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+	 </form>
+ <!-- Begin google-analytics code -->
+<!--<script type="text/javascript"> 
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', 'UA-429254-3']);
+
+  _gaq.push(['_trackPageview']);
+
+ 
+
+  (function() {
+
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+  })();
+
+</script>-->
+<!-- End google-analytics code -->
+<!-- Begin comScore Tag -->
+
+<!-- Begin comScore Tag -->
+<script>
+  var _comscore = _comscore || [];
+  _comscore.push({ c1: "2", c2: "6036484" });
+  (function() {
+    var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+    s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+    el.parentNode.insertBefore(s, el);
+  })();
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036484&cv=2.0&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+</body>
+</html>

@@ -109,7 +109,7 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 	if attr == "" {
 		document.Find("meta").EachWithBreak(func(i int, s *goquery.Selection) bool {
 			attr2, exists := s.Attr("http-equiv")
-			if exists && attr2 == "content-language" {
+			if exists && strings.ToLower(attr2) == "content-language" {
 				attr, _ = s.Attr("content")
 				return false //exit loop
 			}
@@ -130,7 +130,7 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 
 	language := extr.NormalizeLanguage(attr)
 
-	//log.Println("Lang declared", language, attr)
+	//log.Println("Lang declared?", language, "attr:", attr)
 
 	//_, hasStopwords := sw[language]
 	//if language == "" || !hasStopwords {
@@ -144,15 +144,18 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 		//log.Println("Lang from title", len(text), text)
 		if len(text) < 20 {
 			//log.Println("Override with description")
-			text = extr.GetMetaDescription(document)
+			text = strings.TrimSpace(extr.GetMetaDescription(document))
 		}
 		if len(text) < 20 {
-			text = extr.GetMetaContent(document, "og:description")
+			text = strings.TrimSpace(extr.GetMetaContent(document, "og:description"))
 			//log.Println("Override with og:description:  ", text)
 		}
 		if len(text) < 30 {
 			//log.Println("Override with full body")
-			text = document.Find("html").Text()
+			cleaner := NewCleaner(extr.config)
+			docCopy := cleaner.Clean(goquery.CloneDocument(document))
+			text = strings.TrimSpace(docCopy.Find("body").Text())
+			//log.Println("Override with full body: ", text)
 		}
 
 		/*
@@ -189,6 +192,10 @@ func (extr *ContentExtractor) GetMetaLanguage(document *goquery.Document) string
 // a whitelist of recognised language codes
 func (extr *ContentExtractor) NormalizeLanguage(language string) string {
 	idx := strings.LastIndex(language, "-")
+	if idx != -1 {
+		language = language[0:idx]
+	}
+	idx = strings.LastIndex(language, "_")
 	if idx != -1 {
 		language = language[0:idx]
 	}
