@@ -283,6 +283,26 @@ func Test_businessInsiderCom(t *testing.T) {
 	}
 }
 
+func Test_chinaComCn(t *testing.T) {
+	article := Article{
+		Domain:          "china.com.cn",
+		Title:           "马来西亚国际航空发布全新品牌宣传片_生活_中国网",
+		MetaDescription: "马来西亚国际航空发布全新品牌宣传片",
+		CleanedText:     "",
+		MetaKeywords:    "",
+		CanonicalLink:   "",
+		TopImage:        "http://life.china.com.cn/style/images/logo.png",
+		MetaLang:        "zh",
+	}
+	//article.Links = []string{}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
 func Test_CnnCom(t *testing.T) {
 	article := Article{
 		Domain:          "cnn.com",
