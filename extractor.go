@@ -1,5 +1,7 @@
 package goose
 
+// https://golanglibs.com/search?q=language-detection&sort=top
+
 import (
 	"container/list"
 	"log"
