@@ -816,6 +816,7 @@ func init() {
 		"nbl": "nr",
 		"nde": "nd",
 		"ndo": "ng",
+		"nds": "de", // Added 2018-05-25  (Low German, Low Saxon)
 		"nep": "ne",
 		"nld": "nl",
 		"nno": "nn",
