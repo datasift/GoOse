@@ -907,6 +907,28 @@ func Test_NavatelanganaCom(t *testing.T) {
 	}
 }
 
+/*
+func Test_Newschannel20Com(t *testing.T) {
+	article := Article{
+		Domain:          "newschannel20.com",
+		Title:           "\"Red flag\" gun bill passes house",
+		MetaDescription: "A new bill would allow law enforcement to temporarily take guns from people reported as a threat by family or friends. The bill has just passed the House and is now on its way to the senate.The Lethal Violence Order of Protection Act says if someone is giv",
+		CleanedText:     "",
+		MetaKeywords:    "Doug Schmidgall,Senate,Kathleen Willis,Law Enforcement,Social Media Posts,Judge",
+		CanonicalLink:   "http://newschannel20.com/news/local/red-flag-gun-bill-passes-house",
+		TopImage:        "",
+		MetaLang:        "en",  // currently recognised as "tpi"
+	}
+	//article.Links = []string{""}
+
+	removed := []string{"~~~REMOVED~~~"}
+	err := ValidateArticle(article, &removed)
+	if err != nil {
+		t.Error(err)
+	}
+}
+*/
+
 func Test_NewsDirectrixRu(t *testing.T) {
 	article := Article{
 		Domain: "news.directrix.ru",
