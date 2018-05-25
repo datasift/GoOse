@@ -200,6 +200,12 @@ func (extr *ContentExtractor) NormalizeLanguage(language string) string {
 		language = language[0:idx]
 	}
 
+	// normalise common mistakes
+	switch language {
+	case "uk":
+		language = "en"
+	}
+
 	language = strings.ToLower(language)
 	if !isValidLanguageCode(language) {
 		language = ""
