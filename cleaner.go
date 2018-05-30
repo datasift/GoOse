@@ -2,12 +2,13 @@ package goose
 
 import (
 	"container/list"
-	"github.com/PuerkitoBio/goquery"
-	"golang.org/x/net/html"
-	"golang.org/x/net/html/atom"
 	"log"
 	"regexp"
 	"strings"
+
+	"github.com/PuerkitoBio/goquery"
+	"golang.org/x/net/html"
+	"golang.org/x/net/html/atom"
 )
 
 var whitelistedTextAtomTypes = []atom.Atom{atom.Span, atom.Em, atom.I, atom.Strong, atom.B, atom.P, atom.H1, atom.H2, atom.H3, atom.H4}
@@ -540,15 +541,15 @@ func (c *Cleaner) convertDivsToParagraphs(doc *goquery.Document, domType string)
 			})
 
 			/*
-			newNode := new(html.Node)
-			newNode.Type = html.ElementNode
-			newNode.Data = strings.Join(replacementText, "")
-			newNode.DataAtom = atom.P
+				newNode := new(html.Node)
+				newNode.Type = html.ElementNode
+				newNode.Data = strings.Join(replacementText, "")
+				newNode.DataAtom = atom.P
 			*/
-/*
-			replacementText = strings.Replace(replacementText, "=C3=A8", "è")
-			replacementText = strings.Replace(replacementText, "=C3=A9", "é")
-*/
+			/*
+				replacementText = strings.Replace(replacementText, "=C3=A8", "è")
+				replacementText = strings.Replace(replacementText, "=C3=A9", "é")
+			*/
 			div.First().BeforeHtml("<p>" + strings.Join(replacementText, "") + "</p>")
 
 			for s := nodesToRemove.Front(); s != nil; s = s.Next() {
