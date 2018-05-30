@@ -1,6 +1,7 @@
 package goose
 
 import (
+	"errors"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -17,7 +18,6 @@ var stripCharsetContentTypeRegex *regexp.Regexp
 func init() {
 	stripCharsetContentTypeRegex = regexp.MustCompile(`(?m)^(text|application)\/(html|xhtml|xhtml\+xml|plain|javascript|xml|pdf|x\-javascript|rss\+xml|atom\+xml)[;,]+charset=`)
 }
-
 
 // Crawler can fetch the target HTML page
 type Crawler struct {
@@ -89,18 +89,21 @@ func (c Crawler) GetCharset(document *goquery.Document) string {
 // Preprocess fetches the HTML page if needed, converts it to UTF-8 and applies
 // some text normalisation to guarantee better results when extracting the content
 func (c *Crawler) Preprocess() (*goquery.Document, error) {
+	var err error
+
 	if c.RawHTML == "" {
-		c.RawHTML = c.fetchHTML(c.url, c.config.timeout)
+		if c.RawHTML, err = c.fetchHTML(c.url, c.config.timeout); err != nil {
+			return nil, err
+		}
 	}
 	if c.RawHTML == "" {
-		return nil, nil
+		return nil, errors.New("cannot process empty HTML content")
 	}
 
 	c.RawHTML = c.addSpacesBetweenTags(c.RawHTML)
 
 	reader := strings.NewReader(c.RawHTML)
 	document, err := goquery.NewDocumentFromReader(reader)
-
 	if err != nil {
 		return nil, err
 	}
@@ -193,8 +196,11 @@ func (c Crawler) addSpacesBetweenTags(text string) string {
 	return strings.Replace(text, "</p>", "</p>\n", -1)
 }
 
-func (c *Crawler) fetchHTML(u string, timeout time.Duration) string {
-	cookieJar, _ := cookiejar.New(nil)
+func (c *Crawler) fetchHTML(u string, timeout time.Duration) (string, error) {
+	cookieJar, err := cookiejar.New(nil)
+	if err != nil {
+		return "", err
+	}
 	client := &http.Client{
 		Jar:     cookieJar,
 		Timeout: timeout,
@@ -202,25 +208,25 @@ func (c *Crawler) fetchHTML(u string, timeout time.Duration) string {
 	req, err := http.NewRequest("GET", u, nil)
 	if err != nil {
 		log.Println(err.Error())
-		return ""
+		return "", err
 	}
 
 	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_7) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.91 Safari/534.30")
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Println(err.Error())
-		return ""
+		return "", err
 	}
 	contents, err := ioutil.ReadAll(resp.Body)
-	if err == nil {
-		c.RawHTML = string(contents)
-	} else {
-		log.Println(err.Error())
-	}
-	err = resp.Body.Close()
 	if err != nil {
 		log.Println(err.Error())
+		return "", err
+	}
+	c.RawHTML = string(contents)
+	if err = resp.Body.Close(); err != nil {
+		log.Println(err.Error())
+		return "", err
 	}
 
-	return c.RawHTML
+	return c.RawHTML, nil
 }
