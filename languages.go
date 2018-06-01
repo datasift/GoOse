@@ -696,7 +696,10 @@ func init() {
 
 	// https://github.com/wooorm/iso-639-3
 	// https://github.com/abadojack/whatlanggo/pull/7/files
-	// for ISO-639-3 macrolanguages => ISO-639-1 equivalents: https://iso639-3.sil.org/code_tables/639/data/all?title=&field_iso639_cd_st_mmbrshp_639_1_tid=All&name_3=&field_iso639_element_scope_tid=76&field_iso639_language_type_tid=51&items_per_page=200
+	//
+	// For ISO-639-3 macrolanguages, added ISO-639-1 equivalents according
+	// to this site, listing languages in the same family:
+	// https://iso639-3.sil.org/code_tables/639/data/all?title=&field_iso639_cd_st_mmbrshp_639_1_tid=All&name_3=&field_iso639_element_scope_tid=76&field_iso639_language_type_tid=51&items_per_page=200
 	iso6933toiso6931 = map[string]string{
 		"aar": "aa",
 		"abk": "ab",
@@ -791,14 +794,14 @@ func init() {
 		"fry": "fy",
 		"ful": "ff",
 		"ffm": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
-		"fub": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
-		"fuc": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
-		"fue": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
-		"fuf": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
-		"fuh": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
-		"fui": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
-		"fuq": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
-		"fuv": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/ffm
+		"fub": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/fub
+		"fuc": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/fuc
+		"fue": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/fue
+		"fuf": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/fuf
+		"fuh": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/fuh
+		"fui": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/fui
+		"fuq": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/fuq
+		"fuv": "ff", // Added 2018-05-29 https://iso639-3.sil.org/code/fuv
 		"gla": "gd",
 		"gle": "ga",
 		"glg": "gl",
@@ -958,58 +961,58 @@ func init() {
 		"pbu": "ps", // Pushto https://iso639-3.sil.org/code/pbu
 		"pst": "ps", // Pushto https://iso639-3.sil.org/code/pst
 		"que": "qu",
-		"cqu": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qub": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qud": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"quf": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qug": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"quh": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"quk": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qul": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qup": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qur": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qus": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"quw": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qux": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"quy": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"quz": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qva": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvc": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qve": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvh": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvi": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvj": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvl": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvm": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvn": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvo": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvp": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvs": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvw": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qvz": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qwa": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qwc": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qwh": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qws": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxa": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxc": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxh": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxl": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxn": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxo": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxp": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxr": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxt": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxu": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
-		"qxw": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/que
+		"cqu": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/cqu
+		"qub": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qub
+		"qud": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qud
+		"quf": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/quf
+		"qug": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qug
+		"quh": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/quh
+		"quk": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/quk
+		"qul": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qul
+		"qup": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qup
+		"qur": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qur
+		"qus": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qus
+		"quw": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/quw
+		"qux": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qux
+		"quy": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/quy
+		"quz": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/quz
+		"qva": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qva
+		"qvc": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvc
+		"qve": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qve
+		"qvh": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvh
+		"qvi": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvi
+		"qvj": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvj
+		"qvl": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvl
+		"qvm": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvm
+		"qvn": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvn
+		"qvo": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvo
+		"qvp": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvp
+		"qvs": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvs
+		"qvw": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvw
+		"qvz": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qvz
+		"qwa": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qwa
+		"qwc": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qwc
+		"qwh": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qwh
+		"qws": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qws
+		"qxa": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxa
+		"qxc": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxc
+		"qxh": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxh
+		"qxl": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxl
+		"qxn": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxn
+		"qxo": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxo
+		"qxp": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxp
+		"qxr": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxr
+		"qxt": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxt
+		"qxu": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxu
+		"qxw": "qu", // Added 2018-05-29 https://iso639-3.sil.org/code/qxw
 		"roh": "rm",
 		"ron": "ro",
-		"rmc": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmn
-		"rml": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmn
+		"rmc": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmc
+		"rml": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rml
 		"rmn": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmn
-		"rmo": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmn
-		"rmw": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmn
-		"rmy": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmn
+		"rmo": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmo
+		"rmw": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmw
+		"rmy": "ro", // Added 2018-05-29 https://iso639-3.sil.org/code/rmy
 		"run": "rn",
 		"rus": "ru",
 		"sag": "sg",
@@ -1027,9 +1030,9 @@ func init() {
 		"spa": "es",
 		"sqi": "sq",
 		"aae": "sq", // Added 2018-05-29 https://iso639-3.sil.org/code/aae
-		"aat": "sq", // Added 2018-05-29 https://iso639-3.sil.org/code/aae
-		"aln": "sq", // Added 2018-05-29 https://iso639-3.sil.org/code/aae
-		"als": "sq", // Added 2018-05-29 https://iso639-3.sil.org/code/aae
+		"aat": "sq", // Added 2018-05-29 https://iso639-3.sil.org/code/aat
+		"aln": "sq", // Added 2018-05-29 https://iso639-3.sil.org/code/aln
+		"als": "sq", // Added 2018-05-29 https://iso639-3.sil.org/code/als
 		"srd": "sc", // Sardinian
 		"sdc": "sc", // Added 2018-05-29 https://iso639-3.sil.org/code/sdc
 		"sdn": "sc", // Added 2018-05-29 https://iso639-3.sil.org/code/sdn
@@ -1073,24 +1076,24 @@ func init() {
 		"yih": "yi", // Added 2018-05-29 https://iso639-3.sil.org/code/yih
 		"yor": "yo",
 		"zha": "za",
-		"ccx": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"ccy": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zch": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zeh": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zgb": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zgm": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zgn": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zhd": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zhn": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zlj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zln": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zlq": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zqe": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zyb": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zyg": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zyj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zyn": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
-		"zzj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zha
+		"ccx": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/ccx
+		"ccy": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/ccy
+		"zch": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zch
+		"zeh": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zeh
+		"zgb": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zgb
+		"zgm": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zgm
+		"zgn": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zgn
+		"zhd": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zhd
+		"zhn": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zhn
+		"zlj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zlj
+		"zln": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zln
+		"zlq": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zlq
+		"zqe": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zqe
+		"zyb": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zyb
+		"zyg": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zyg
+		"zyj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zyj
+		"zyn": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zyn
+		"zzj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/zzj
 		"zho": "zh",
 		"chi": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/chi
 		"cjy": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/cjy
@@ -1107,32 +1110,32 @@ func init() {
 		"wuu": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/wuu
 		"yue": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/yue
 		"hmn": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"blu": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"cqd": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hea": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hma": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmc": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmd": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hme": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmg": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmh": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmi": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hml": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmm": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmp": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmq": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hms": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmw": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmy": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hmz": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hnj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"hrm": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"huj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"mmr": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"muq": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"mww": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
-		"sfm": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmn
+		"blu": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/blu
+		"cqd": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/cqd
+		"hea": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hea
+		"hma": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hma
+		"hmc": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmc
+		"hmd": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmd
+		"hme": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hme
+		"hmg": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmg
+		"hmh": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmh
+		"hmi": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmi
+		"hmj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmj
+		"hml": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hml
+		"hmm": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmm
+		"hmp": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmp
+		"hmq": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmq
+		"hms": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hms
+		"hmw": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmw
+		"hmy": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmy
+		"hmz": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hmz
+		"hnj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hnj
+		"hrm": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/hrm
+		"huj": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/huj
+		"mmr": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/mmr
+		"muq": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/muq
+		"mww": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/mww
+		"sfm": "zh", // Added 2018-05-29 https://iso639-3.sil.org/code/sfm
 		"zul": "zu",
 	}
 }

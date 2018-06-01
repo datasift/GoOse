@@ -69,6 +69,6 @@ func GetDefaultConfiguration(args ...string) Configuration {
 		stopWords:               NewStopwords(), //TODO with path
 		parser:                  NewParser(),
 		timeout:                 5 * time.Second,
-		//titleDelimiters:         jsconfiguration.Array("titleDelimiters"),
+		//titleDelimiters:         []string{"|", " - ",	" — ",	"»", ":"},
 	}
 }
