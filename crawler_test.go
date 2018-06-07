@@ -1382,7 +1382,7 @@ func Test_WapCnkiNet(t *testing.T) {
 		CleanedText:     "",
 		MetaKeywords:    "中兴危机峰回路转,中兴,特朗普,商务部官员,芯片公司,运营商,华为,北京商报,石飞,核心芯片,联发科,,免费阅读下载",
 		CanonicalLink:   "",
-		TopImage:        "http://wap.cnki.net/touch/resource/image/banner.png",
+		TopImage:        "",
 		MetaLang:        "en", // NB: this is the declared language, but it is clearly wrong
 	}
 	//article.Links = []string{""}
