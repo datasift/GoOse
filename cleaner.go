@@ -252,7 +252,7 @@ var removeNodesRegEx = regexp.MustCompile("" +
 	"^spr-|" +
 	"storytopbar\\-bucket|" +
 	"^stream-sidebar|" +
-	"sub_nav|" +
+	"sub_?nav|" +
 	"subscribe|" +
 	"subscription|" +
 	"^suggestions$|" +
