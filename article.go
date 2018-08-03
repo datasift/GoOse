@@ -19,8 +19,8 @@ type Article struct {
 	Domain          string             `json:"domain,omitempty"`
 	TopNode         *goquery.Selection `json:"-"`
 	TopImage        string             `json:"image,omitempty"`
-	Tags            *set.Set           `json:"tags,omitempty"`
-	Movies          *set.Set           `json:"movies,omitempty"`
+	Tags            set.Interface      `json:"tags,omitempty"`
+	Movies          set.Interface      `json:"movies,omitempty"`
 	FinalURL        string             `json:"url,omitempty"`
 	LinkHash        string             `json:"linkhash,omitempty"`
 	RawHTML         string             `json:"rawhtml,omitempty"`

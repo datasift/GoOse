@@ -13,15 +13,15 @@ var punctuationRegex = regexp.MustCompile(`[^\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Nd}\p{Pc
 
 // StopWords implements a simple language detector
 type StopWords struct {
-	cachedStopWords map[string]*set.Set
+	cachedStopWords map[string]set.Interface
 }
 
 // NewStopwords returns an instance of a stop words detector
 func NewStopwords() StopWords {
-	cachedStopWords := make(map[string]*set.Set)
+	cachedStopWords := make(map[string]set.Interface)
 	for lang, stopwords := range sw {
 		lines := strings.Split(stopwords, "\n")
-		cachedStopWords[lang] = set.New()
+		cachedStopWords[lang] = set.New(set.ThreadSafe)
 		for _, line := range lines {
 			if strings.HasPrefix(line, "#") {
 				continue
@@ -71,7 +71,7 @@ func (stop *StopWords) stopWordsCount(lang string, text string) wordStats {
 		return wordStats{}
 	}
 	ws := wordStats{}
-	stopWords := set.New()
+	stopWords := set.New(set.ThreadSafe)
 	text = strings.ToLower(text)
 	items := strings.Split(text, " ")
 	stops := stop.cachedStopWords[lang]
@@ -10754,7 +10754,7 @@ visi
 yra
 `,
 	// Latvian stopwords from A Stemming Algorithm for Latvian, Karlis Kreslins
-	// the original list of over 800 forms was refined: 
+	// the original list of over 800 forms was refined:
 	//   pronouns, adverbs, interjections were removed
 	"lv": `
 # prepositions

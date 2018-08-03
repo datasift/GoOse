@@ -11,14 +11,14 @@ type wordStats struct {
 	//total number of words on a node
 	wordCount int
 	//holds an actual list of the stop words we found
-	stopWords *set.Set
+	stopWords set.Interface
 }
 
-func (w *wordStats) getStopWords() *set.Set {
+func (w *wordStats) getStopWords() set.Interface {
 	return w.stopWords
 }
 
-func (w *wordStats) setStopWords(stopWords *set.Set) {
+func (w *wordStats) setStopWords(stopWords set.Interface) {
 	w.stopWords = stopWords
 }
 
